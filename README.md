@@ -15,7 +15,6 @@
 * "백승진" <sj.seungjin.baek@gmail.com>
 * "김용철" <skekdnl12@gmail.com>
 * "김지원" <kjw8739@naver.com>
-* "김상아" <violets5618@gmail.com>
 
 
 # <a name="skills"></a>Library & Framework
