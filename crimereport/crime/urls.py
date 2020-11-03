@@ -7,5 +7,6 @@ router.register('crime', views.CongressViewSet)
 
 urlpatterns = [
     # path('', include(router.urls)),
-    path('', views.test, name='test'),
+    path('', views.index, name='index'),
+    path('test/', views.test, name='test'),
 ]

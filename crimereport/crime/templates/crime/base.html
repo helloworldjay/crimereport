@@ -9,7 +9,8 @@
 <link rel="icon" href="#">
 <title>Beauttio - HTML Template by WowThemes.net</title>
 <!-- CSS -->
-<link href="{% static 'crime/css/style.css' %}" rel="stylesheet">
+<link href={% static 'crime/css/style.css' %} rel="stylesheet">
+<link href={% static 'crime/css/d3style.css' %} rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 <link href='https://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Oswald:400,700,300' rel='stylesheet' type='text/css'>
@@ -18,6 +19,7 @@
 
 {% block bodys %}
 {% endblock bodys %}
+
 
 <div id="loader-wrapper">
 <div id="loader"></div>
@@ -34,8 +36,8 @@
     </div>
     <nav>
         <ul>
-           <li><a href={% url 'test' %}>Crime</a></li>
-           <li><a href="blog.html">Post</a></li>
+           <li><a href={% url 'index' %}>Crime</a></li>
+           <li><a href={% url 'test'%}>Post</a></li>
            <li><a target="_blank" href="https://www.wowthemes.net/themes/beauttio/">개발자</a></li>
        </ul>
    </nav>
@@ -54,8 +56,10 @@
 {% block contents %}
 {% endblock contents %}
 
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src={% static 'crime/js/nicescroll.js' %}></script>
 <script src={% static 'crime/js/common.js' %}></script>
+<script src={% static 'crime/js/home.js' %}></script>
 </body>
 </html>

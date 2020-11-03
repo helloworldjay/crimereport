@@ -11,3 +11,6 @@ class CongressViewSet(viewsets.ModelViewSet):
 
 def test(request):
     return render(request, 'crime/blog.html', {})
+
+def index(request):
+    return render(request, 'crime/index.html', {})
