@@ -8,3 +8,6 @@ from rest_framework import viewsets
 class CongressViewSet(viewsets.ModelViewSet):
     queryset = Congressperson.objects.all()
     serializer_class = CongresspersonSerializer
+
+def test(request):
+    return render(request, 'crime/index.html', {})
