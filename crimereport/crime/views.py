@@ -10,4 +10,4 @@ class CongressViewSet(viewsets.ModelViewSet):
     serializer_class = CongresspersonSerializer
 
 def test(request):
-    return render(request, 'crime/blog.html', {})
+    return render(request, 'crime/index.html', {})
