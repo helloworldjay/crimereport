@@ -17,5 +17,3 @@ class Congressperson(models.Model):
     elected_num = models.IntegerField(default=0)
     party = models.CharField(max_length=50)
 
-class Newspaper(models.Model):
-    photo = models.ImageField(upload_to='img',blank=True)
