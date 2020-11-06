@@ -7,6 +7,11 @@ from . import views
 
 urlpatterns = [
     # path('', include(router.urls)),
+<<<<<<< HEAD
     path('', views.CongressListView.as_view(), name='congresslist'),
     path('<str:district>/', views.CongressDetailView.as_view(), name='congressdetail'),
+=======
+    path('', views.index, name='index'),
+    path('test/', views.test, name='test'),
+>>>>>>> yc
 ]
