@@ -1,8 +1,20 @@
-/* @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css); */
-/* text, div, h1, h3, span { 
+/* @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css); */ */
+.d3-div {
+    display: inline;
+    width : 100%;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+/* 
+.d3-div text, div, h1, h3, span { 
     font-family: 'Nanum Gothic', sans-serif; 
-    font-size: 13px; */
-/* } */
+    font-size: 13px;
+} */
+svg {
+    position: relative;
+    align-items: center;
+}
+
 .d3-background {
     width: 100%;
     height: 100%;
