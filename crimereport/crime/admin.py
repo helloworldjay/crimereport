@@ -4,7 +4,7 @@ from .models import Congressperson # Region
 # Register your models here.
 @admin.register(Congressperson)
 class UserAdmin(admin.ModelAdmin):
-    list_display = ['id','name', 'district', 'crimes', 'photo', 'elected_num']
+    list_display = ['id','name', 'district', 'crimes', 'penalty', 'photo', 'elected_num']
 
 # @admin.register(Region)
 # class UserAdmin(admin.ModelAdmin):
