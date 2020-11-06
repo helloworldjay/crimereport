@@ -25,5 +25,12 @@ class CongressListView(ListView):
     def get_queryset(self):
         return Congressperson.objects.all() 
 
-# def test(request):
-#     return render(request, 'crime/index.html', {})
+class CongressDetailView(DetailView):
+    model = Congressperson
+    template_name = 'crime/index.html'
+    context_object_name = "congresslist"  
+
+
+    def get_queryset(self, district):
+        return Congressperson.objects.get(pk=district) 
+
