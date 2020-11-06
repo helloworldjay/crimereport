@@ -34,11 +34,3 @@ class CongressDetailView(DetailView):
     def get_queryset(self, district):
         return Congressperson.objects.get(pk=district) 
 
-<<<<<<< HEAD
-=======
-def test(request):
-    return render(request, 'crime/blog.html', {})
-
-def index(request):
-    return render(request, 'crime/index.html', {})
->>>>>>> yc

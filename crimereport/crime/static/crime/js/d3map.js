@@ -119,7 +119,7 @@ d3.json(maps_path[assembly_no]["precinct"], function(error, kor) {
 function clicked(d) {
     if (active.node() === this) return reset();
     // this 가 클릭한 도시의 path 태그
-    console.log(this)
+    console.log($(this).text())
     active.classed("active", false);
     active = d3.select(this).classed("active", true);
 
