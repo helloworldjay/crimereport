@@ -133,8 +133,12 @@ function clicked(d) {
             data: jsonData,
             dataType: "json",
             success: function (response) {
-                console.log(response)
-                console.log($('section').attr('class'));
+                $('.con_name').html(response.name)
+                $('.con_district').html(response.district)
+                $('.con_crime').html(response.crime)
+                $('.con_party').html(response.party)
+                
+                $(this).select('section').attr('class', 'background:nth-child(2) down-scroll');
             }
         });
         
