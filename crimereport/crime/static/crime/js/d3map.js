@@ -128,6 +128,18 @@ function clicked(d) {
         sendData.district = $(this).select('.g_precinct').select('.precinct-lable').text()
         var jsonData = JSON.stringify(sendData)
         console.log(jsonData)
+        console.log(sendData.district)
+        $.ajax({
+            type: "GET",
+            url: "http://127.0.0.1:8000/" + sendData.district,
+            data: jsonData,
+            dataType: "json",
+            success: function (response) {
+                console.log(jsonData)
+                console.log($('section').attr('class'));
+            }
+        });
+        
     } else {
         sendData.city = $(this).select('.g_province').select('.province-label').text()
         console.log(sendData.district)

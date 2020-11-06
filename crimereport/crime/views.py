@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponse
 from .models import Congressperson
 from .serializer import CongresspersonSerializer
 from rest_framework import viewsets, mixins, generics
@@ -25,12 +25,8 @@ class CongressListView(ListView):
     # def get_queryset(self):
     #     return Congressperson.objects.all() 
 
-class CongressDetailView(DetailView):
-    model = Congressperson
-    template_name = 'crime/index.html'
-    context_object_name = "congresslist"  
+# class CongressDetailView(DetailView):
 
-
-    def get_queryset(self, district):
-        return Congressperson.objects.get(pk=district) 
-
+#     template_name = 'crime/index.html'
+def CongressDetailView(request, district):
+    return HttpResponse(district)
