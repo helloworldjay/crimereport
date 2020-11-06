@@ -8,5 +8,9 @@ from . import views
 urlpatterns = [
     # path('', include(router.urls)),
     path('', views.CongressListView.as_view(), name='congresslist'),
+<<<<<<< HEAD
     path('<slug:district>/', views.CongressDetailView, name='congressdetail'),
+=======
+    path('<str:district>/', views.search,name="search"),
+>>>>>>> main
 ]
