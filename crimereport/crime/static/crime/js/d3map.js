@@ -8,6 +8,11 @@ var width = document.querySelector('.d3-div').clientWidth;
 var height = 720 * width / 960;
 var active = d3.select(null);
 var choice;
+var selectCity = false; // 확대가 되었느냐 안되었느냐로 가져올 데이터값을 다르게 해주기위해 만들어 놓음
+var sendData = new Object(); //보내줄 데이터를 저정할 object를 만들어준다.
+sendData.city = null;
+sendData.district = null;
+
 var proj = d3.geo.mercator()
     .center([128.0, 35.9])
     .scale(6000)
@@ -77,6 +82,7 @@ d3.json(maps_path[assembly_no]["precinct"], function(error, kor) {
         .append('path')
         .attr('d', path)
         .attr('class', 'precinct')
+        .on('click',clicked)
         .append("title")
         .text(function(d) { return d.properties.precinct_name; });
 
@@ -92,7 +98,6 @@ d3.json(maps_path[assembly_no]["precinct"], function(error, kor) {
 
     g_precincts.on("mouseover", function() {
         d3.select(this).select("path").classed("highlighted", true);
-        $(this).on('click', cityClick())
 
         var html_text = '<h3>'+d3.select(this).datum().properties.precinct_name+'</h3>';
         // You can add more
@@ -111,15 +116,25 @@ d3.json(maps_path[assembly_no]["precinct"], function(error, kor) {
         d3.select(this).select("path").classed("highlighted", false);
         d3.select("#info")
             .style("visibility", "hidden");
-        $(this).on('click','')
     })
 
 });
 
 function clicked(d) {
     if (active.node() === this) return reset();
+
+    //json data 생성하는 작업
+    if (active.node() !== null) {
+        sendData.district = $(this).select('.g_precinct').select('.precinct-lable').text()
+        var jsonData = JSON.stringify(sendData)
+        console.log(jsonData)
+    } else {
+        sendData.city = $(this).select('.g_province').select('.province-label').text()
+        console.log(sendData.district)
+    }
+
+    
     // this 가 클릭한 도시의 path 태그
-    console.log($(this).text())
     active.classed("active", false);
     active = d3.select(this).classed("active", true);
 
@@ -130,14 +145,12 @@ function clicked(d) {
             y = (bounds[0][1] + bounds[1][1]) / 2,
             scale = .7 / Math.max(dx / width, dy / height),
             translate = [width / 2 - scale * x, height / 2 - scale * y];
-    console.log('bounds')
         
-    console.log(bounds)
     g.transition()
             .duration(750)
             .style("stroke-width", 1.5 / scale + "px")
             .attr("transform", "translate(" + translate + ")scale(" + scale + ")");
-
+    
     d3.selectAll(".province").classed("selected", false);
     d3.selectAll(".province").classed("notselected", false);
     d3.selectAll(".precinct").classed("selected", false);
@@ -148,7 +161,6 @@ function clicked(d) {
 
     d3.selectAll("text.province-label").style("font-size", 14 / scale + "px");
 
-
     if( d3.select(this).classed("province") ) {
         d3.selectAll(".province").classed("notselected", true);
         d3.select(this).classed("notselected", false);
@@ -157,9 +169,11 @@ function clicked(d) {
             .style("visibility", "visible")
             .style("font-size", 10 / scale + "px");
     }
+    
 }
 
 function reset() {
+    
     active.classed("active", false);
     active = d3.select(null);
 
@@ -175,14 +189,15 @@ function reset() {
     d3.selectAll("text.province-label").style("font-size", "10px");
 }
 
-// function cityClick(d) {
-//     var city = $('.highlighted').text()
-//     var sendData = new Object();
+// function cityClick() {
+    
+    // var city = $('.highlighted').text()
+    // var sendData = new Object();
 
-//     sendData.city = city
-//     sendData.district = $('#info').text()
+    // sendData.city = city
+    // sendData.district = $('#info').text()
 
-//     var jsonData = JSON.stringify(sendData)
+    // var jsonData = JSON.stringify(sendData)
 
-//     console.log(jsonData)
+    // console.log(jsonData)
 // }

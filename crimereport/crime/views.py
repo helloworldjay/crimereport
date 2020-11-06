@@ -22,8 +22,8 @@ class CongressListView(ListView):
     context_object_name = "congresslist"  
 
 
-    def get_queryset(self):
-        return Congressperson.objects.all() 
+    # def get_queryset(self):
+    #     return Congressperson.objects.all() 
 
 class CongressDetailView(DetailView):
     model = Congressperson

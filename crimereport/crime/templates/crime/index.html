@@ -19,7 +19,7 @@
 	</section>
 	<section class="background">
 	<div class="content-wrapper">
-		<div class="about">
+		{% comment %} <div class="about">
 			<div class="aboutbadge">
 				<span><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><br/>
 				<span class="border">Awarded Salon</span><br/>
@@ -28,6 +28,10 @@
 			<div class="aboutbadge black">
 				<span>Upbeat, chic, and funky salon. We are based on twenty-five years of experience. We specialize in couture cuts and blowouts, men's cuts, natural and funky hair colors, and highlights. </span>
 			</div>
+		</div> {% endcomment %}
+		<div class='d3-div'>
+				<svg></svg>
+				<div id="info"></div>
 		</div>
 	</div>
 	</section>
@@ -154,12 +158,9 @@
 	<button
 <form/>
 </div>
-
 <!-- Scripts -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="{% static 'crime/js/common.js' %}"></script>
-<script src="{% static 'crime/js/home.js' %}"></script>
-<script src="{% static 'crime/js/testimonials.js' %}"></script>
+<script src="https://d3js.org/d3.v3.min.js"></script>
+<script src="https://d3js.org/topojson.v1.min.js"></script>
+<script src={% static 'crime/js/d3map.js' %}></script>
+{% endblock contents %}
 
-</body>
-</html>
