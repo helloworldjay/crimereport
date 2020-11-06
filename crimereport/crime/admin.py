@@ -1,15 +1,15 @@
 from django.contrib import admin
-from .models import Congressperson, Region
+from .models import Congressperson # Region
 
 # Register your models here.
 @admin.register(Congressperson)
 class UserAdmin(admin.ModelAdmin):
-    list_display = ['id','name', 'city', 'crimes', 'photo', 'elected_num']
+    list_display = ['id','name', 'district', 'crimes', 'photo', 'elected_num']
 
-@admin.register(Region)
-class UserAdmin(admin.ModelAdmin):
-    # list_display = ['id','city', 'district', 'detail']
-    pass
+# @admin.register(Region)
+# class UserAdmin(admin.ModelAdmin):
+#     # list_display = ['id','city', 'district', 'detail']
+#     pass
 
 # @admin.register(City)
 # class UserAdmin(admin.ModelAdmin):
