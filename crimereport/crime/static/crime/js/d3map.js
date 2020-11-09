@@ -121,7 +121,12 @@ d3.json(maps_path[assembly_no]["precinct"], function(error, kor) {
 });
 
 function clicked(d) {
-    if (active.node() === this) return reset();
+    if (active.node() === this) {
+        sendData.city = $(this).select('.g_province').select('.province-label').text()
+        sendData.district = null;
+
+        return reset();
+    }
 
     //json data 생성하는 작업
     if (active.node() !== null) {
@@ -138,49 +143,57 @@ function clicked(d) {
                 $('.con_crime').html(response.crime)
                 $('.con_party').html(response.party)
                 
-                $(this).select('section').attr('class', 'background:nth-child(2) down-scroll');
-            }
-        });
+                $('section:nth-child(2)').attr('class', 'background down-scroll');
+                //현재상황 1.지도에서 정보로 넘어가는 효과까지는 들어가나 반대의 경우 휠을 계속 돌려야 가능해짐;
+                // 2. 새로고침을 하지 않으면 지도의 다시한번 클릭이 불가능함.
+                sendData.city = null;
+                sendData.district = null;
+                
+                return reset();
+                }
+                
+            });
         
     } else {
         sendData.city = $(this).select('.g_province').select('.province-label').text()
-    }
+    
 
     
-    // this 가 클릭한 도시의 path 태그
-    active.classed("active", false);
-    active = d3.select(this).classed("active", true);
+        // this 가 클릭한 도시의 path 태그
+        active.classed("active", false);
+        active = d3.select(this).classed("active", true);
 
-    var bounds = path.bounds(d),
-            dx = bounds[1][0] - bounds[0][0],
-            dy = bounds[1][1] - bounds[0][1],
-            x = (bounds[0][0] + bounds[1][0]) / 2,
-            y = (bounds[0][1] + bounds[1][1]) / 2,
-            scale = .7 / Math.max(dx / width, dy / height),
-            translate = [width / 2 - scale * x, height / 2 - scale * y];
-        
-    g.transition()
-            .duration(750)
-            .style("stroke-width", 1.5 / scale + "px")
-            .attr("transform", "translate(" + translate + ")scale(" + scale + ")");
-    
-    d3.selectAll(".province").classed("selected", false);
-    d3.selectAll(".province").classed("notselected", false);
-    d3.selectAll(".precinct").classed("selected", false);
-    d3.selectAll("text.precinct-label").style("visibility", "hidden");
+        var bounds = path.bounds(d),
+                dx = bounds[1][0] - bounds[0][0],
+                dy = bounds[1][1] - bounds[0][1],
+                x = (bounds[0][0] + bounds[1][0]) / 2,
+                y = (bounds[0][1] + bounds[1][1]) / 2,
+                scale = .7 / Math.max(dx / width, dy / height),
+                translate = [width / 2 - scale * x, height / 2 - scale * y];
+            
+        g.transition()
+                .duration(750)
+                .style("stroke-width", 1.5 / scale + "px")
+                .attr("transform", "translate(" + translate + ")scale(" + scale + ")");
+                
+        d3.selectAll(".province").classed("selected", false);
+        d3.selectAll(".province").classed("notselected", false);
+        d3.selectAll(".precinct").classed("selected", false);
+        d3.selectAll("text.precinct-label").style("visibility", "hidden");
 
-    d3.selectAll(".province").style("stroke-width", 2 / scale + "px");
-    d3.selectAll(".precinct").style("stroke-width", 1 / scale + "px");
+        d3.selectAll(".province").style("stroke-width", 2 / scale + "px");
+        d3.selectAll(".precinct").style("stroke-width", 1 / scale + "px");
 
-    d3.selectAll("text.province-label").style("font-size", 14 / scale + "px");
+        d3.selectAll("text.province-label").style("font-size", 14 / scale + "px");
 
-    if( d3.select(this).classed("province") ) {
-        d3.selectAll(".province").classed("notselected", true);
-        d3.select(this).classed("notselected", false);
-        d3.select(this).classed("selected", true);
-        d3.selectAll("text.precinct-label")
-            .style("visibility", "visible")
-            .style("font-size", 10 / scale + "px");
+        if( d3.select(this).classed("province") ) {
+            d3.selectAll(".province").classed("notselected", true);
+            d3.select(this).classed("notselected", false);
+            d3.select(this).classed("selected", true);
+            d3.selectAll("text.precinct-label")
+                .style("visibility", "visible")
+                .style("font-size", 10 / scale + "px");
+        }
     }
     
 }
