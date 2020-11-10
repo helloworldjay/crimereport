@@ -8,38 +8,46 @@
 {% block contents %}
 <div class="container">
 	<section class="background">
-	<div class="content-wrapper">
-		<div class="intro">
-			<h1><span class="smaller wow zoomIn" data-wow-duration="2s" data-wow-delay="0.5">1044 Madison Avenue, New York, NY 10075, US</span>
-			<span class="big wow pulse" data-wow-duration="1s" data-wow-delay="0s">Crime</span><br/>
-			<span class="small wow fadeIn" data-wow-duration="2s" data-wow-delay="0.5s">- in Politics -</span>
-			</h1>
-		</div>
-	</div>
-	</section>
-	<section class="background">
-	<div class="content-wrapper">
-		<div class='d3-div'>
-				<svg></svg>
-				<div id="info"></div>
-		</div>
-	</div>
-	</section>
-	<section class="background">
-	<div class="content-wrapper">
-		<div class="voucher">
-			<button class='#' onclick="clickreturn()">지도선택</button>
-			<div class="voucher-whitetransparent">
-				<h2 class='con_name'></h2>
-				<h2 class='con_district'></h2>
-				<h2 class='con_party'></h2>
-				<img class='con_photo' src="" alt="">
-				<h2 class='con_elected_num'></h2>
-				<h2 class='con_crimes'></h2>
-				<h2 class='con_penalty'></h2>
+		<div class="content-wrapper">
+			<div class="intro">
+				<h1><span class="smaller wow zoomIn" data-wow-duration="2s" data-wow-delay="0.5">1044 Madison Avenue, New York, NY 10075, US</span>
+				<span class="big wow pulse" data-wow-duration="1s" data-wow-delay="0s">Crime</span><br/>
+				<span class="small wow fadeIn" data-wow-duration="2s" data-wow-delay="0.5s">- in Politics -</span>
+				</h1>
 			</div>
 		</div>
-	</div>
+	</section>
+	<section class="background">
+		<div class="content-wrapper">
+			<div class='d3-div'>
+					<svg></svg>
+					<div id="info"></div>
+			</div>
+		</div>
+	</section>
+	<section class="background">
+		<div class="content-wrapper">
+			<h2 class='crimes-title'>Crimes</h2>
+			<a href="#" onclick='clickreturn()' rel="noopener noreferrer">지도선택</a>
+			<div class='row'>
+				<div class='left-column'>
+					<div class='biography'>
+						<div class='myphoto'>
+							<img class='con_photo'>
+						</div>
+						<ul>
+							<li class='con_name'></li>
+							<li class='con_district' ></li>
+							<li class='con_party'></li>
+							<li class="con_elected_num"></li>
+							<li class="con_crimes"></li>
+							<li class='con_penalty'></li>
+							
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
 	</section>
 	<section class="background">
 	<div class="content-wrapper">

@@ -102,7 +102,7 @@ a {text-decoration:none;}
   background-image: url(../img/bg2.jpg);
 }
 .background:nth-child(3) {
-  background-image: url(../img/bg3.jpg);
+  background-image: url(../img/bg2.jpg);
 }
 .background:nth-child(4) {
   background-image: url(../img/bg4.jpg);
@@ -1194,4 +1194,64 @@ p.comment-form-email, p.comment-form-author, p.comment-form-url {
 			 margin:0px auto;
 			 padding: 30px 30px;
 	}
+}
+
+/* 제작 css */
+.row {
+  margin-right: 15px;
+  margin-left: 15px;
+}
+.crimes-title {
+  margin-bottom: 80px;
+  text-align: center;
+  font-size: 50px;
+  line-height: 50px;
+  color: #2c3e50;
+  position: relative;
+}
+.left-column {
+  position: relative;
+  left:66.6666%;
+  width : 33.3333%;
+}
+.biography{
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border:1px solid #EEEEEE;
+  position: relative;
+}
+
+.biography::after{
+  content: "";
+  border-bottom: 1px solid #EEEEEE;
+  position: absolute;
+  bottom: -3px;
+  width: 100%;
+  border-radius: 10px;
+  height: 20px;
+}
+
+.myphoto{
+  position: relative;
+  background: url(static/crime/img/photo-frame.png) bottom center no-repeat;
+  background-size: contain;
+}
+
+.myphoto img{
+  position: relative;
+  z-index: -1;
+}
+
+.biography ul{
+  padding:25px 20px 30px;
+}
+
+.biography ul li{
+  padding:5px 0;
+  font-size: 16px;
+  border-bottom:1px solid #EEEEEE;
+}
+
+.biography ul li:last-child{
+  border-bottom:0;
 }
