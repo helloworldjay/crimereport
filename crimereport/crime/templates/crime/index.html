@@ -1,6 +1,32 @@
 {% extends 'crime/base.html' %}
 {% load static %}
 
+{% block base %}
+<link href={% static 'crime/css/style.css' %} rel="stylesheet">
+<link href={% static 'crime/css/d3style.css' %} rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<link href='https://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Oswald:400,700,300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,400italic,300italic,300,700,700italic' rel='stylesheet' type='text/css'>
+{% endblock base %}
+
+{% block bootstraplink %}
+<link href={% static 'crime/css/result_style.css' %} rel="stylesheet">
+<!-- Web Fonts -->
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
+<!-- Bootstrap core CSS -->
+{% comment %} <link href={% static 'crime/bootstrap/css/bootstrap.min.css' %} rel="stylesheet" media="screen"> {% endcomment %}
+<!-- Font Awesome CSS -->
+<link href= {% static 'crime/css/font-awesome.min.css' %} rel="stylesheet" media="screen">
+<!-- Animate css -->
+<link href= {% static 'crime/css/animate.css' %} rel="stylesheet">
+<!-- Magnific css -->
+<link href= {% static 'crime/css/magnific-popup.css' %} rel="stylesheet">
+<!-- Responsive CSS -->
+<link href={% static 'crime/css/responsive.css' %} rel="stylesheet">
+{% endblock bootstraplink %}
+
+
 {% block bodys %}
 <body class='frontpage'>
 {% endblock bodys %}
@@ -19,32 +45,25 @@
 	</section>
 	<section class="background">
 	<div class="content-wrapper">
-		{% comment %} <div class="about">
-			<div class="aboutbadge">
-				<span><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><br/>
-				<span class="border">Awarded Salon</span><br/>
-				Est. 2007</span>
-			</div>
-			<div class="aboutbadge black">
-				<span>Upbeat, chic, and funky salon. We are based on twenty-five years of experience. We specialize in couture cuts and blowouts, men's cuts, natural and funky hair colors, and highlights. </span>
-			</div>
-		</div> {% endcomment %}
 		<div class='d3-div'>
 				<svg></svg>
 				<div id="info"></div>
 		</div>
 	</div>
 	</section>
+	
 	<section class="background">
 	<div class="content-wrapper">
 		<div class="voucher">
-			<div class="voucher-whitetransparent">
+			
 					<h2 class='con_name'></h2>
+					<h2 class='con_photo'></h2>
 					<h2 class='con_district'></h2>
 					<h2 class='con_party'></h2>
-					<h2 class='con_crime'></h2>
-				{% comment %} <h2><i class="fa fa-gift"></i><br/>REDEEM YOUR VOUCHER<br/>20% OFF IN 2016<br/><a href="#slide6">Book Now</a></h2> {% endcomment %}
-			</div>
+					<h2 class='con_elected_num'></h2>
+					<h2 class='con_crimes'></h2>
+					<h2 class='con_penalty'></h2>
+			
 		</div>
 	</div>
 	</section>
@@ -158,5 +177,6 @@
 <script src="https://d3js.org/d3.v3.min.js"></script>
 <script src="https://d3js.org/topojson.v1.min.js"></script>
 <script src={% static 'crime/js/d3map.js' %}></script>
+
 {% endblock contents %}
 
