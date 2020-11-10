@@ -130,6 +130,7 @@ function clicked(d) {
         // console.log(active[0][0], this)
         if ($(this).select('.precinct') !== undefined) {
         sendData.district = $(this).select('.g_precinct').select('.precinct-lable').text()
+        console.log(sendData.city)
         var jsonData = JSON.stringify(sendData)
         $.ajax({
             type: "GET",
@@ -140,9 +141,12 @@ function clicked(d) {
                 const baseurl = 'static/crime/img/'
                 $('.con_name').html(response.name)
                 $('.con_district').html(response.district)
-                $('.con_crime').html(response.crimes)
                 $('.con_photo').attr('src',baseurl + response.photo)
+                $('.con_crimes').html(response.crimes)
+                $('.con_penalty').html(response.penalty)
+                $('.con_elected_num').html(response.elected_num)
                 $('.con_party').html(response.party)
+
                 
                 $('section:nth-child(2)').attr('class', 'background down-scroll');
                 return reset(); 

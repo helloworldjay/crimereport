@@ -4,6 +4,8 @@ from django.views.generic import DetailView, ListView
 import json
 from django.forms.models import model_to_dict
 from django.http.response import JsonResponse
+from pathlib import Path
+import os
 
 
 class CongressListView(ListView):
@@ -13,6 +15,10 @@ class CongressListView(ListView):
 
 def search(request, district):
     info_object = Congressperson.objects.get(district=district)
+    base = str(Path(__file__).resolve().parent.parent)
+    base = '/'.join(list(base.split('\\')))
+    info_object.photo = base + info_object.photo
+    print(info_object.photo)
     if info_object:
         to_json = model_to_dict(info_object)
         return JsonResponse(to_json)
