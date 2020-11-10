@@ -15,10 +15,6 @@ class CongressListView(ListView):
 
 def search(request, district):
     info_object = Congressperson.objects.get(district=district)
-    base = str(Path(__file__).resolve().parent.parent)
-    base = '/'.join(list(base.split('\\')))
-    info_object.photo = base + info_object.photo
-    print(info_object.photo)
     if info_object:
         to_json = model_to_dict(info_object)
         return JsonResponse(to_json)
