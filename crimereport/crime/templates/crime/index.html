@@ -11,6 +11,7 @@
 {% endblock base %}
 
 {% block bootstraplink %}
+<link href={% static 'crime/css/result_style.css' %} rel="stylesheet">
 <!-- Web Fonts -->
 <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
 <!-- Bootstrap core CSS -->
@@ -44,122 +45,25 @@
 	</section>
 	<section class="background">
 	<div class="content-wrapper">
-		{% comment %} <div class="about">
-			<div class="aboutbadge">
-				<span><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><br/>
-				<span class="border">Awarded Salon</span><br/>
-				Est. 2007</span>
-			</div>
-			<div class="aboutbadge black">
-				<span>Upbeat, chic, and funky salon. We are based on twenty-five years of experience. We specialize in couture cuts and blowouts, men's cuts, natural and funky hair colors, and highlights. </span>
-			</div>
-		</div> {% endcomment %}
 		<div class='d3-div'>
 				<svg></svg>
 				<div id="info"></div>
 		</div>
 	</div>
 	</section>
-	<section class='background'>
-		<section id="skills" class="skills-section section-padding">
-		<div class="container">
-			<h2 class="section-title wow fadeInUp">Skills</h2>
-
-			<div class="row">
-			<div class="col-md-6">
-				<div class="skill-progress">
-				<div class="skill-title"><h3>UX Design</h3></div> 
-				<div class="progress">
-					<div class="progress-bar six-sec-ease-in-out" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" ><span>95%</span>
-					</div>
-				</div><!-- /.progress -->
-				</div><!-- /.skill-progress -->
-
-				<div class="skill-progress">
-				<div class="skill-title"><h3>Visual Design</h3></div> 
-				<div class="progress">
-					<div class="progress-bar six-sec-ease-in-out" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" ><span>80%</span>
-					</div>
-				</div><!-- /.progress -->
-				</div><!-- /.skill-progress -->
-				<div class="skill-progress">
-				<div class="skill-title"><h3>Business Design</h3></div>  
-				<div class="progress">
-					<div class="progress-bar six-sec-ease-in-out" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" ><span>75%</span>
-					</div>
-				</div><!-- /.progress -->
-				</div><!-- /.skill-progress -->
-			</div><!-- /.col-md-6 -->
-
-			</div><!-- /.row -->
-
-			<div class="skill-chart text-center">
-			<h3>More skills</h3>
-			</div>
-			
-			<div class="row more-skill text-center">
-			<div class="col-xs-12 col-sm-4 col-md-2">
-				<div class="chart" data-percent="91" data-color="e74c3c">
-						<span class="percent"></span>
-						<div class="chart-text">
-						<span>leadership</span>
-						</div>
-					</div>
-				</div>
-				<div class="col-xs-12 col-sm-4 col-md-2">
-				<div class="chart" data-percent="23" data-color="2ecc71">
-						<span class="percent"></span>
-						<div class="chart-text">
-						<span>Creativity</span>
-						</div>
-					</div>
-				</div>
-				<div class="col-xs-12 col-sm-4 col-md-2">
-				<div class="chart" data-percent="68" data-color="3498db">
-						<span class="percent"></span>
-						<div class="chart-text">
-						<span>Management</span>
-						</div>
-					</div>
-				</div>
-				<div class="col-xs-12 col-sm-4 col-md-2">
-				<div class="chart" data-percent="68" data-color="3498db">
-						<span class="percent"></span>
-						<div class="chart-text">
-						<span>Branding</span>
-						</div>
-					</div>
-				</div>
-				<div class="col-xs-12 col-sm-4 col-md-2">
-				<div class="chart" data-percent="68" data-color="3498db">
-						<span class="percent"></span>
-						<div class="chart-text">
-						<span>Marketing</span>
-						</div>
-					</div>
-				</div>
-				<div class="col-xs-12 col-sm-4 col-md-2">
-				<div class="chart" data-percent="68" data-color="3498db">
-						<span class="percent"></span>
-						<div class="chart-text">
-						<span>Motivation</span>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			</div><!-- /.container -->
-    	</section><!-- End Skills Section -->
-	</section>
+	
 	<section class="background">
 	<div class="content-wrapper">
 		<div class="voucher">
-			<div class="voucher-whitetransparent">
+			
 					<h2 class='con_name'></h2>
+					<h2 class='con_photo'></h2>
 					<h2 class='con_district'></h2>
 					<h2 class='con_party'></h2>
-					<h2 class='con_crime'></h2>
-			</div>
+					<h2 class='con_elected_num'></h2>
+					<h2 class='con_crimes'></h2>
+					<h2 class='con_penalty'></h2>
+			
 		</div>
 	</div>
 	</section>
@@ -273,7 +177,6 @@
 <script src="https://d3js.org/d3.v3.min.js"></script>
 <script src="https://d3js.org/topojson.v1.min.js"></script>
 <script src={% static 'crime/js/d3map.js' %}></script>
-<script src={% static 'crime/bootstrap/js/bootstrap.js'%}></script>
-<script src={% static 'crime/bootstrap/js/bootstrap.min.js'%}></script>
+
 {% endblock contents %}
 
