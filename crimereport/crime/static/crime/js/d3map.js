@@ -137,21 +137,11 @@ function clicked(d) {
             data: jsonData,
             dataType: "json",
             success: function (response) {
-                "<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css' />"
-                "<link href='static/crime/bootstrap/css/bootstrap.min.css' rel='stylesheet' media='screen' />"
-                "<link href= 'static/crime/css/font-awesome.min.css' rel='stylesheet' media='screen' />"
-                "<link href= 'static/crime/css/animate.css' rel='stylesheet' />"
-                "<link href= 'static/crime/css/magnific-popup.css' rel='stylesheet' />"
-                "<link href='static/crime/css/responsive.css' rel='stylesheet' />"
-                
-
-
-
-
-                // C:/Users/AI/Desktop/DjangoProject/crimereport/crime/templates/crime/section3.html
+                const baseurl = 'static/crime/img/'
                 $('.con_name').html(response.name)
                 $('.con_district').html(response.district)
-                $('.con_crime').html(response.crime)
+                $('.con_crime').html(response.crimes)
+                $('.con_photo').attr('src',baseurl + response.photo)
                 $('.con_party').html(response.party)
                 
                 $('section:nth-child(2)').attr('class', 'background down-scroll');
