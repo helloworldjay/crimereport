@@ -1,28 +1,8 @@
 {% extends 'crime/base.html' %}
 {% load static %}
 
-{% block base %}
-<link href={% static 'crime/css/style.css' %} rel="stylesheet">
-<link href={% static 'crime/css/d3style.css' %} rel="stylesheet">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-<link href='https://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Oswald:400,700,300' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,400italic,300italic,300,700,700italic' rel='stylesheet' type='text/css'>
-{% endblock base %}
 
 {% block bootstraplink %}
-<!-- Web Fonts -->
-<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
-<!-- Bootstrap core CSS -->
-{% comment %} <link href={% static 'crime/bootstrap/css/bootstrap.min.css' %} rel="stylesheet" media="screen"> {% endcomment %}
-<!-- Font Awesome CSS -->
-<link href= {% static 'crime/css/font-awesome.min.css' %} rel="stylesheet" media="screen">
-<!-- Animate css -->
-<link href= {% static 'crime/css/animate.css' %} rel="stylesheet">
-<!-- Magnific css -->
-<link href= {% static 'crime/css/magnific-popup.css' %} rel="stylesheet">
-<!-- Responsive CSS -->
-<link href={% static 'crime/css/responsive.css' %} rel="stylesheet">
 {% endblock bootstraplink %}
 
 
@@ -61,7 +41,8 @@
 	</div>
 	</section>
 	<section class='background'>
-		<section id="skills" class="skills-section section-padding">
+		<div class="content-wrapper">
+			<section id="skills" class="skills-section section-padding">
 		<div class="container">
 			<h2 class="section-title wow fadeInUp">Skills</h2>
 
@@ -148,12 +129,14 @@
 				</div>
 			</div>
 
-			</div><!-- /.container -->
-    	</section><!-- End Skills Section -->
+        </div><!-- /.container -->
+    </section><!-- End Skills Section -->
+		</div>
 	</section>
 	<section class="background">
 	<div class="content-wrapper">
 		<div class="voucher">
+			<button onclick="clickreturn()">지도선택</button>
 			<div class="voucher-whitetransparent">
 					<h2 class='con_name'></h2>
 					<h2 class='con_district'></h2>
@@ -273,7 +256,5 @@
 <script src="https://d3js.org/d3.v3.min.js"></script>
 <script src="https://d3js.org/topojson.v1.min.js"></script>
 <script src={% static 'crime/js/d3map.js' %}></script>
-<script src={% static 'crime/bootstrap/js/bootstrap.js'%}></script>
-<script src={% static 'crime/bootstrap/js/bootstrap.min.js'%}></script>
 {% endblock contents %}
 

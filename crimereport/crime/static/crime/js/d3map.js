@@ -122,14 +122,13 @@ d3.json(maps_path[assembly_no]["precinct"], function(error, kor) {
 
 function clicked(d) {
     if (active.node() === this) {
-        sendData.city = $(this).select('.g_province').select('.province-label').text()
-        sendData.district = null;
-
         return reset();
     }
 
     //json data 생성하는 작업
-    if (active.node() !== null) {
+    if (active[0][0] !== null) {
+        // console.log(active[0][0], this)
+        if ($(this).select('.precinct') !== undefined) {
         sendData.district = $(this).select('.g_precinct').select('.precinct-lable').text()
         var jsonData = JSON.stringify(sendData)
         $.ajax({
@@ -138,21 +137,34 @@ function clicked(d) {
             data: jsonData,
             dataType: "json",
             success: function (response) {
+                "<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css' />"
+                "<link href='static/crime/bootstrap/css/bootstrap.min.css' rel='stylesheet' media='screen' />"
+                "<link href= 'static/crime/css/font-awesome.min.css' rel='stylesheet' media='screen' />"
+                "<link href= 'static/crime/css/animate.css' rel='stylesheet' />"
+                "<link href= 'static/crime/css/magnific-popup.css' rel='stylesheet' />"
+                "<link href='static/crime/css/responsive.css' rel='stylesheet' />"
+                
+
+
+
+
+                // C:/Users/AI/Desktop/DjangoProject/crimereport/crime/templates/crime/section3.html
                 $('.con_name').html(response.name)
                 $('.con_district').html(response.district)
                 $('.con_crime').html(response.crime)
                 $('.con_party').html(response.party)
                 
                 $('section:nth-child(2)').attr('class', 'background down-scroll');
-                //현재상황 1.지도에서 정보로 넘어가는 효과까지는 들어가나 반대의 경우 휠을 계속 돌려야 가능해짐;
-                // 2. 새로고침을 하지 않으면 지도의 다시한번 클릭이 불가능함.
-                sendData.city = null;
-                sendData.district = null;
-                
+                return reset(); 
+            },
+            error: function () {
+                alert('아직 정보가 없는 지역입니다.')
                 return reset();
                 }
-                
             });
+        } else {
+            return reset();
+        }
         
     } else {
         sendData.city = $(this).select('.g_province').select('.province-label').text()
@@ -199,7 +211,10 @@ function clicked(d) {
 }
 
 function reset() {
-    
+
+    sendData.city = null;
+    sendData.district = null;
+
     active.classed("active", false);
     active = d3.select(null);
 
@@ -215,15 +230,6 @@ function reset() {
     d3.selectAll("text.province-label").style("font-size", "10px");
 }
 
-// function cityClick() {
-    
-    // var city = $('.highlighted').text()
-    // var sendData = new Object();
-
-    // sendData.city = city
-    // sendData.district = $('#info').text()
-
-    // var jsonData = JSON.stringify(sendData)
-
-    // console.log(jsonData)
-// }
+function clickreturn() {
+    $('section:nth-child(2)').attr('class','background up-scroll')
+}
