@@ -27,50 +27,26 @@
 	</section>
 	<section class="background">
         <div class="content-wrapper">
+			<a class='map-choice' href="#" onclick='clickreturn()' rel="noopener noreferrer">지도선택</a>
             <h2 class='crimes-title'>Crimes</h2>
             
             <div class='row'>
                 <div class='left-column'>
-   						<img class='con_photo' id='photo_big'>
+						   <h2 id="con_saying"></h2>
+						   <h2 id="con_speaker"></h2>
                 </div>
                 <div class='right-column'>
                         <div class='myphoto'>
+							<img class='con_photo' id='photo_big'>
 						</div>
-                  <li class='con_speaker'></li>
-			      <li class='con_saying'></li>
-						<table class="right_table">
-							<tr>
-								<td colspan="2" class="right_table_title">당선자</td>
-							</tr>
-							<tr>
-								<td>이름</td>
-								<td class="con_name"></td>
-							</tr>
-							<tr>
-								<td>지역구</td>
-								<td class="con_district"></td>
-							</tr>
-							<tr>
-								<td>정당</td>
-								<td class="con_party"></td>
-								
-							</tr>
-							<tr>
-								<td>재선 횟수</td>
-								<td class="con_elected_num"></td>
-							</tr>
-							<tr>
-								<td>범죄</td>
-								<td class="con_crimes"></td>								
-							</tr>
-							<tr>
-								<td>형량</td>
-								<td class="con_penalty"></td>
-							</tr>
-							<tr>
-								<td colspan="2 "><a href="#" onclick='clickreturn()' rel="noopener noreferrer">지도선택</a></td>
-							</tr>
-						</table>
+						<ul>
+							<li><strong>이름 : </strong><span id="con_name"></span></li>
+							<li><strong>지역구 : </strong><span id="con_district"></span></li>
+							<li><strong>정당 : </strong><span id="con_party"></span></li>
+							<li><strong>재선횟수 : </strong><span id="con_elected_num"></span></li>
+							<li><strong>범죄 : </strong><span id="con_crimes"></span></li>
+							<li><strong>형량 : </strong><span id="con_penalty"></span></li>
+						</ul>
                 </div>
             </div>
         </div>
