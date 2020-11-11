@@ -26,31 +26,56 @@
 		</div>
 	</section>
 	<section class="background">
-		<div class="content-wrapper">
-			<h2 class='crimes-title'>Crimes</h2>
-			<a href="#" onclick='clickreturn()' rel="noopener noreferrer">지도선택</a>
-			<li class='con_speaker'></li>
-			<li class='con_saying'></li>
-			<div class='row'>
-				<div class='left-column'>
-					<div class='biography'>
-						<div class='myphoto'>
-							<img class='con_photo'>
+        <div class="content-wrapper">
+            <h2 class='crimes-title'>Crimes</h2>
+            
+            <div class='row'>
+                <div class='left-column'>
+   						<img class='con_photo' id='photo_big'>
+                </div>
+                <div class='right-column'>
+                        <div class='myphoto'>
 						</div>
-						<ul>
-							<li class='con_name'></li>
-							<li class='con_district' ></li>
-							<li class='con_party'></li>
-							<li class="con_elected_num"></li>
-							<li class="con_crimes"></li>
-							<li class='con_penalty'></li>
-							
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+            <li class='con_speaker'></li>
+			      <li class='con_saying'></li>
+						<table class="right_table">
+							<tr>
+								<td colspan="2" class="right_table_title">당선자</td>
+							</tr>
+							<tr>
+								<td>이름</td>
+								<td class="con_name"></td>
+							</tr>
+							<tr>
+								<td>지역구</td>
+								<td class="con_district"></td>
+							</tr>
+							<tr>
+								<td>정당</td>
+								<td class="con_party"></td>
+								
+							</tr>
+							<tr>
+								<td>재선 횟수</td>
+								<td class="con_elected_num"></td>
+							</tr>
+							<tr>
+								<td>범죄</td>
+								<td class="con_crimes"></td>								
+							</tr>
+							<tr>
+								<td>형량</td>
+								<td class="con_penalty"></td>
+							</tr>
+							<tr>
+								<td colspan="2 "><a href="#" onclick='clickreturn()' rel="noopener noreferrer">지도선택</a></td>
+							</tr>
+						</table>
+                </div>
+            </div>
+        </div>
+    </section>
+
 	<section class="background">
 	<div class="content-wrapper">
 		<div class="pricingbadge">
