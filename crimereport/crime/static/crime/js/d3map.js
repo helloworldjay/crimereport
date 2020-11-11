@@ -146,6 +146,8 @@ function clicked(d) {
                 $('.con_penalty').html(response.penalty)
                 $('.con_elected_num').html(response.elected_num)
                 $('.con_party').html(response.party)
+                $('.con_speaker').html(response.speaker)
+                $('.con_saying').html(response.saying)
 
                 
                 $('section:nth-child(2)').attr('class', 'background down-scroll');

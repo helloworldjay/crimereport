@@ -10,3 +10,6 @@ class Congressperson(models.Model):
     elected_num = models.IntegerField(default=0)
     party = models.CharField(max_length=50)
 
+class Saying(models.Model):
+    speaker = models.CharField(max_length=50)
+    saying = models.TextField(blank=True)
