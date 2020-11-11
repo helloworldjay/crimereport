@@ -1197,14 +1197,19 @@ p.comment-form-email, p.comment-form-author, p.comment-form-url {
 }
 
 /* 제작 css */
+.info-wrapper {
+  position: relative;
+  height:100%;
+}
 .crimes-title {
-  margin-bottom: 1%;
+  height:10%;
+  padding-bottom: 1%;
   text-align: center;
   font-size: 50px;
-  line-height: 50px;
+  line-height: 1;
   color: #2c3e50;
   position: relative;
-  margin-top: 1%;
+  padding-top: 1%;
 }
 .map-choice {
   position: absolute;
@@ -1213,22 +1218,21 @@ p.comment-form-email, p.comment-form-author, p.comment-form-url {
 }
 .row {
   position: relative;
-  margin-right: 15px;
-  margin-left: 15px;
   display: flex;
   flex-direction: row;
-  height:100%;
-  margin-left: 10%;
-  margin-right: 10%;
-  margin-bottom: 5px;
+  height:85%;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-bottom: 5%;
 }
 .right-column {
   position: relative;
   width : 33.3333%;
-  display: flex;
+  display: inline-block;
   flex-direction: column;
   border: 1px solid white;
-  padding: 3px 6px;
+  height: 100%;
+  padding: 1%;
 }
 .left-column {
   position: relative;
@@ -1258,31 +1262,33 @@ p.comment-form-email, p.comment-form-author, p.comment-form-url {
 
 .myphoto{
   position: relative;
-  width : relative;
   background: url(../img/photo-frame.png) bottom center no-repeat;
   background-size: contain;
-  height:60%;
+  height:70%;
+  overflow: hidden;
 }
 
 .myphoto img{
   position: relative;
-  height: 100%;
-  width:100%;
   z-index: -5;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
 }
 .right-column ul {
   font-family: 'Roboto', sans-serif;
   align-items: flex-start;
+  height: 30%;
 }
 .right-column ul li{
   display: flex;
-  margin-left:2%;
-  margin-right: 2%;
+  padding-left:2%;
+  padding-right: 2%;
   border-bottom: 1px solid white;
   align-items: left;
 }
 .right-column ul li strong {
   font-weight: 900;
-  font-size: 18px;
+  font-size: 2vh;
 }
 
