@@ -1198,14 +1198,18 @@ p.comment-form-email, p.comment-form-author, p.comment-form-url {
 
 /* 제작 css */
 .crimes-title {
-  margin-bottom: 30px;
+  margin-bottom: 1%;
   text-align: center;
   font-size: 50px;
   line-height: 50px;
   color: #2c3e50;
   position: relative;
-  height: 20%;
-  margin-top: 20px;
+  margin-top: 1%;
+}
+.map-choice {
+  position: absolute;
+  left:5%;
+  top:5%;
 }
 .row {
   position: relative;
@@ -1213,32 +1217,25 @@ p.comment-form-email, p.comment-form-author, p.comment-form-url {
   margin-left: 15px;
   display: flex;
   flex-direction: row;
-  height:70%;
+  height:100%;
   margin-left: 10%;
   margin-right: 10%;
+  margin-bottom: 5px;
 }
 .right-column {
   position: relative;
-  display: inline-block;
   width : 33.3333%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid white;
+  padding: 3px 6px;
 }
 .left-column {
   position: relative;
   display: inline-block;
   width : 66.6666%;
+  height: 100%;
 }
-.left-column #photo_big{
-  position: relative;
-  height: 80%;
-  object-fit: fill;
-}
-/* .short-info {
-  position: relative;
-}
-.short-info p {
-  position: relative;
-  display: inline;
-} */
 .biography{
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
@@ -1261,24 +1258,31 @@ p.comment-form-email, p.comment-form-author, p.comment-form-url {
 
 .myphoto{
   position: relative;
-  background: url(static/crime/img/photo-frame.png) bottom center no-repeat;
+  width : relative;
+  background: url(../img/photo-frame.png) bottom center no-repeat;
   background-size: contain;
+  height:60%;
 }
 
 .myphoto img{
   position: relative;
-  z-index: -1;
+  height: 100%;
+  width:100%;
+  z-index: -5;
 }
-
-.right-column table tr{
-  padding:0;
+.right-column ul {
+  font-family: 'Roboto', sans-serif;
+  align-items: flex-start;
 }
-
-.right-column table tr td{
-  padding:5px 0;
-  font-size: 30px;
-  border:1px solid #EEEEEE;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+.right-column ul li{
+  display: flex;
+  margin-left:2%;
+  margin-right: 2%;
+  border-bottom: 1px solid white;
+  align-items: left;
+}
+.right-column ul li strong {
+  font-weight: 900;
+  font-size: 18px;
 }
 
