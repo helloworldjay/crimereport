@@ -87,7 +87,7 @@ a {text-decoration:none;}
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0);
 }
 .background:first-child {
   background-image: url(../img/bg1.jpg);
@@ -102,8 +102,7 @@ a {text-decoration:none;}
   background-image: url(../img/bg2.jpg);
 }
 .background:nth-child(3) {
-  /* background-image: url(../img/bg2.jpg); */
-  background-color: white;
+  background-image: url(../img/bg3.jpg);
 }
 .background:nth-child(4) {
   background-image: url(../img/bg4.jpg);
@@ -1198,12 +1197,6 @@ p.comment-form-email, p.comment-form-author, p.comment-form-url {
 }
 
 /* 제작 css */
-.row {
-  margin-right: 15px;
-  margin-left: 15px;
-  display: flex;
-  flex-direction: row;
-}
 .crimes-title {
   margin-bottom: 30px;
   text-align: center;
@@ -1211,16 +1204,33 @@ p.comment-form-email, p.comment-form-author, p.comment-form-url {
   line-height: 50px;
   color: #2c3e50;
   position: relative;
+  height: 20%;
+  margin-top: 20px;
 }
-.left-column {
+.row {
   position: relative;
-  display: inline-block;
-  width : 33.3333%;
+  margin-right: 15px;
+  margin-left: 15px;
+  display: flex;
+  flex-direction: row;
+  height:70%;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 .right-column {
   position: relative;
   display: inline-block;
+  width : 33.3333%;
+}
+.left-column {
+  position: relative;
+  display: inline-block;
   width : 66.6666%;
+}
+.left-column #photo_big{
+  position: relative;
+  height: 80%;
+  object-fit: fill;
 }
 /* .short-info {
   position: relative;
@@ -1234,6 +1244,8 @@ p.comment-form-email, p.comment-form-author, p.comment-form-url {
   border-bottom-right-radius: 10px;
   border:1px solid #EEEEEE;
   position: relative;
+  display: inline-block;
+  margin-left: -8%;
 }
 /* 
 .biography::after{
@@ -1246,6 +1258,7 @@ p.comment-form-email, p.comment-form-author, p.comment-form-url {
   height: 20px;
 } */
 
+
 .myphoto{
   position: relative;
   background: url(static/crime/img/photo-frame.png) bottom center no-repeat;
@@ -1257,16 +1270,15 @@ p.comment-form-email, p.comment-form-author, p.comment-form-url {
   z-index: -1;
 }
 
-.biography ul{
-  padding:25px 20px 30px;
+.right-column table tr{
+  padding:0;
 }
 
-.biography ul li{
+.right-column table tr td{
   padding:5px 0;
-  font-size: 16px;
-  border-bottom:1px solid #EEEEEE;
+  font-size: 30px;
+  border:1px solid #EEEEEE;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
-.biography ul li:last-child{
-  border-bottom:0;
-}
