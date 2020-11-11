@@ -102,7 +102,8 @@ a {text-decoration:none;}
   background-image: url(../img/bg2.jpg);
 }
 .background:nth-child(3) {
-  background-image: url(../img/bg2.jpg);
+  /* background-image: url(../img/bg2.jpg); */
+  background-color: white;
 }
 .background:nth-child(4) {
   background-image: url(../img/bg4.jpg);
@@ -1200,9 +1201,11 @@ p.comment-form-email, p.comment-form-author, p.comment-form-url {
 .row {
   margin-right: 15px;
   margin-left: 15px;
+  display: flex;
+  flex-direction: row;
 }
 .crimes-title {
-  margin-bottom: 80px;
+  margin-bottom: 30px;
   text-align: center;
   font-size: 50px;
   line-height: 50px;
@@ -1211,16 +1214,28 @@ p.comment-form-email, p.comment-form-author, p.comment-form-url {
 }
 .left-column {
   position: relative;
-  left:66.6666%;
+  display: inline-block;
   width : 33.3333%;
 }
+.right-column {
+  position: relative;
+  display: inline-block;
+  width : 66.6666%;
+}
+/* .short-info {
+  position: relative;
+}
+.short-info p {
+  position: relative;
+  display: inline;
+} */
 .biography{
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   border:1px solid #EEEEEE;
   position: relative;
 }
-
+/* 
 .biography::after{
   content: "";
   border-bottom: 1px solid #EEEEEE;
@@ -1229,7 +1244,7 @@ p.comment-form-email, p.comment-form-author, p.comment-form-url {
   width: 100%;
   border-radius: 10px;
   height: 20px;
-}
+} */
 
 .myphoto{
   position: relative;
