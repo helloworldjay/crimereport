@@ -130,7 +130,7 @@ function clicked(d) {
         // console.log(active[0][0], this)
         if ($(this).select('.precinct') !== undefined) {
         sendData.district = $(this).select('.g_precinct').select('.precinct-lable').text()
-        console.log(sendData.city)
+
         var jsonData = JSON.stringify(sendData)
         $.ajax({
             type: "GET",
@@ -138,18 +138,38 @@ function clicked(d) {
             data: jsonData,
             dataType: "json",
             success: function (response) {
-                const baseurl = 'static/crime/img/'
-                $('#con_name').html(response.name)
-                $('#con_district').html(response.district)
-                $('.con_photo').attr('src',baseurl + response.photo)
-                $('#con_crimes').html(response.crimes)
-                $('#con_penalty').html(response.penalty)
-                $('#con_elected_num').html(response.elected_num)
-                $('#con_party').html(response.party)
-                $('#con_speaker').html(response.speaker)
-                $('#con_saying').html(response.saying)
-                
                 $('section:nth-child(2)').attr('class', 'background down-scroll');
+                setTimeout(() => {
+                    const baseurl = 'static/crime/img/'
+                    $('#con_name').html(response.name)
+                    $('#con_district').html(response.district)
+                    $('.con_photo').attr('src',baseurl + response.photo)
+                    $('#con_crimes').html(response.crimes)
+                    $('#con_elected_num').html(response.elected_num)
+                    $('#con_party').html(response.party)
+                    
+                    // left-column 디자인
+                    // left-column 내용 추가
+                    if (response.crimes === "") {
+                        $('.left-column').append(
+                                "<div class='left-item'><p class='title'>"+response.speaker+
+                                "</p><p class='content' id='typing1'></p></div>"
+                            )
+                        $('#typing1').attr('typingEffect', typingEffect('#typing1',response.saying));
+                    } else {
+                        $('.left-column').append(
+                                "<div class='left-item'><p class='title'>Crimes List</p>"+
+                                "<p class='content' id='typing1'></p></div><div class='left-item'>"+
+                                "<p class='title'>Penalty List</p>" +
+                                "<p class='content' id='typing2'></p></div>"
+                            )
+                        $('#typing1').attr('typingEffect', typingEffect('#typing1',response.crimes));
+                        $('#typing2').attr('typingEffect', typingEffect('#typing2',response.penalty));
+                    }
+                    //
+                    
+                    }, 1000);
+                
                 return reset(); 
             },
             error: function () {
@@ -227,4 +247,27 @@ function reset() {
 
 function clickreturn() {
     $('section:nth-child(2)').attr('class','background up-scroll')
+    $('.left-column').html('')
 }
+//  타이핑 하는 부분
+function typingEffect(id, contentStr) {
+    var typingBool = false; 
+    var typingIdx=0;
+    var typingTxt = contentStr; // 타이핑될 텍스트를 가져온다 
+    typingTxt=typingTxt.split(""); // 한글자씩 자른다. 
+    if(typingBool==false){ // 타이핑이 진행되지 않았다면 
+    typingBool=true; 
+    
+    var tyInt = setInterval(typing,0.1); // 반복동작 
+    } 
+    
+    function typing(){ 
+        if(typingIdx<typingTxt.length){ // 타이핑될 텍스트 길이만큼 반복 
+            $(id).append(typingTxt[typingIdx]); // 한글자씩 이어준다. 
+            typingIdx++; 
+        } else{ 
+            clearInterval(tyInt); //끝나면 반복종료 
+        } 
+    }
+}
+// 여기 까지 

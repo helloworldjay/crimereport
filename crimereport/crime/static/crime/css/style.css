@@ -240,9 +240,15 @@ border-top: 1px solid;
 	margin-bottom:30px;
 	font-weight:300;
 }
-
-
-
+/* 폰트 추가 */
+#smaller_font{
+  font-family: 'Nanum Brush Script', cursive;
+  font-size: 30px;
+}
+/* 색깔 추가 */
+#big_color{
+  color: #c60f13;
+}
 .about {
 	width: 500px;
     max-width: 100%;
@@ -1164,7 +1170,8 @@ p.comment-form-email, p.comment-form-author, p.comment-form-url {
 	.intro h1 span.smaller,.logoarea .intro h1 span.smaller {
 			font-size:17px;
 			line-height:1.3;
-	}
+  }
+  
 }
 @media screen and (max-width:430px) {
 	.background {
@@ -1206,15 +1213,16 @@ p.comment-form-email, p.comment-form-author, p.comment-form-url {
   padding-bottom: 1%;
   text-align: center;
   font-size: 50px;
-  line-height: 1;
+  line-height: 1.1;
   color: #2c3e50;
   position: relative;
   padding-top: 1%;
+  margin-right: 25%;
+  margin-left:25%
 }
 .map-choice {
-  position: absolute;
-  left:5%;
-  top:5%;
+  margin-top: 55px;
+  
 }
 .row {
   position: relative;
@@ -1223,7 +1231,8 @@ p.comment-form-email, p.comment-form-author, p.comment-form-url {
   height:85%;
   padding-left: 10%;
   padding-right: 10%;
-  padding-bottom: 5%;
+  margin-bottom: 5%;
+  padding-top: 2%;
 }
 .right-column {
   position: relative;
@@ -1231,14 +1240,19 @@ p.comment-form-email, p.comment-form-author, p.comment-form-url {
   display: inline-block;
   flex-direction: column;
   border: 1px solid white;
-  height: 100%;
+  height: 95%;
   padding: 1%;
+  box-sizing: border-box;
 }
 .left-column {
   position: relative;
   display: inline-block;
+  flex-direction: column;
+  align-items: center;
   width : 66.6666%;
-  height: 100%;
+  height: 95%;
+  box-sizing: border-box;
+  padding-right: 5%;
 }
 .biography{
   border-bottom-left-radius: 10px;
@@ -1248,18 +1262,6 @@ p.comment-form-email, p.comment-form-author, p.comment-form-url {
   display: inline-block;
   margin-left: -8%;
 }
-/* 
-.biography::after{
-  content: "";
-  border-bottom: 1px solid #EEEEEE;
-  position: absolute;
-  bottom: -3px;
-  width: 100%;
-  border-radius: 10px;
-  height: 20px;
-} */
-
-
 .myphoto{
   position: relative;
   background: url(../img/photo-frame.png) bottom center no-repeat;
@@ -1279,6 +1281,7 @@ p.comment-form-email, p.comment-form-author, p.comment-form-url {
   font-family: 'Roboto', sans-serif;
   align-items: flex-start;
   height: 30%;
+  padding-top: 10%;
 }
 .right-column ul li{
   display: flex;
@@ -1292,3 +1295,37 @@ p.comment-form-email, p.comment-form-author, p.comment-form-url {
   font-size: 2vh;
 }
 
+.left-column .left-item {
+  display: flex;
+  flex-direction: column;
+  padding : 5%;
+  box-sizing: border-box;
+}
+.left-column .left-item .title {
+  display: flex;
+  font-size: 10vh;
+  font-weight: 800;
+  padding-bottom : 1vh;
+  margin : 0;
+}
+.left-column .left-item .content {
+  display: flex;
+  font-size: 6vh;
+}
+/* 타이핑 하는 부분 */
+
+p.typing-txt{display: none;}
+  
+
+.typing {  
+/*       position: absolute;*/ 
+     display: inline-block; 
+      animation-name: cursor; 
+      animation-duration: 0.3s; 
+      animation-iteration-count: infinite; 
+    } 
+    @keyframes cursor{ 
+      0%{border-right: 1px solid #fff} 
+      50%{border-right: 1px solid #000} 
+      100%{border-right: 1px solid #fff} 
+    }
