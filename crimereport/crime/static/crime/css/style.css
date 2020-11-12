@@ -240,9 +240,15 @@ border-top: 1px solid;
 	margin-bottom:30px;
 	font-weight:300;
 }
-
-
-
+/* 폰트 추가 */
+#smaller_font{
+  font-family: 'Nanum Brush Script', cursive;
+  font-size: 30px;
+}
+/* 색깔 추가 */
+#big_color{
+  color: #c60f13;
+}
 .about {
 	width: 500px;
     max-width: 100%;
@@ -1164,7 +1170,8 @@ p.comment-form-email, p.comment-form-author, p.comment-form-url {
 	.intro h1 span.smaller,.logoarea .intro h1 span.smaller {
 			font-size:17px;
 			line-height:1.3;
-	}
+  }
+  
 }
 @media screen and (max-width:430px) {
 	.background {
