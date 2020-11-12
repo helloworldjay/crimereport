@@ -149,47 +149,24 @@ function clicked(d) {
                     $('#con_party').html(response.party)
                     
                     // left-column 디자인
-                    //  타이핑 하는 부분
-                    function typingEffect(str) {
-                        var typingBool = false; 
-                        var usetext = str;
-                        var typingIdx=0;
-                        var typingTxt = usetext; // 타이핑될 텍스트를 가져온다 
-                        typingTxt=typingTxt.split(""); // 한글자씩 자른다. 
-                        if(typingBool==false){ // 타이핑이 진행되지 않았다면 
-                        typingBool=true; 
-                        
-                        var tyInt = setInterval(typing,0.01); // 반복동작 
-                        } 
-                        
-                        function typing(){ 
-                            if(typingIdx<typingTxt.length){ // 타이핑될 텍스트 길이만큼 반복 
-                                $(".typing").append(typingTxt[typingIdx]); // 한글자씩 이어준다. 
-                                typingIdx++; 
-                            } else{ 
-                                clearInterval(tyInt); //끝나면 반복종료 
-                            } 
-                        }
-                    }
-                    // 여기 까지 
+                    // left-column 내용 추가
                     if (response.crimes === "") {
                         $('.left-column').append(
                                 "<div class='left-item'><p class='title'>"+response.speaker+
-                                "</p><p class='content typing'>"+response.saying+"</p></div>"
+                                "</p><p class='content' id='typing1' typingEffect='"+typingEffect('#typing1', response.saying)+"'></p></div>"
                             )
-                            
                     } else {
                         $('.left-column').append(
-                                "<div class='left-item'><p class='title'>Crimes List</p><p class='content typing'>"+
-                                response.crimes+
-                                "</p></div><div class='left-item'>"+
+                                "<div class='left-item'><p class='title'>Crimes List</p>"+
+                                "<p class='content' id='typing1' typingEffect='"+typingEffect('#typing1', response.crimes)+"></p></div><div class='left-item'>"+
                                 "<p class='title'>Penalty List</p>" +
-                                "<p class='content typing'>"+response.penalty+"</p></div>"
-                                
-                        )
-                    }    
-                    }, 750);
+                                "<p class='content' id='typing2' typingEffect='"+typingEffect('#typing2', response.penalty)+"></p></div>"
+                            )
+                        console.log(response.penalty)
+                        }
+                    //
                     
+                    }, 1000);
                 
                 return reset(); 
             },
@@ -270,3 +247,25 @@ function clickreturn() {
     $('section:nth-child(2)').attr('class','background up-scroll')
     $('.left-column').html('')
 }
+//  타이핑 하는 부분
+function typingEffect(id, contentStr) {
+    var typingBool = false; 
+    var typingIdx=0;
+    var typingTxt = contentStr; // 타이핑될 텍스트를 가져온다 
+    typingTxt=typingTxt.split(""); // 한글자씩 자른다. 
+    if(typingBool==false){ // 타이핑이 진행되지 않았다면 
+    typingBool=true; 
+    
+    var tyInt = setInterval(typing,0.1); // 반복동작 
+    } 
+    
+    function typing(){ 
+        if(typingIdx<typingTxt.length){ // 타이핑될 텍스트 길이만큼 반복 
+            $(id).append(typingTxt[typingIdx]); // 한글자씩 이어준다. 
+            typingIdx++; 
+        } else{ 
+            clearInterval(tyInt); //끝나면 반복종료 
+        } 
+    }
+}
+// 여기 까지 
