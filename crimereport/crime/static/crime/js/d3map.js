@@ -150,39 +150,41 @@ function clicked(d) {
                     
                     // left-column 디자인
                     //  타이핑 하는 부분
-                    var typingBool = false; 
-                    var usetext = response.saying;
-                    var typingIdx=0; 
-                    var typingTxt = usetext; // 타이핑될 텍스트를 가져온다 
-                    typingTxt=typingTxt.split(""); // 한글자씩 자른다. 
-                    if(typingBool==false){ // 타이핑이 진행되지 않았다면 
-                    typingBool=true; 
-                    
-                    var tyInt = setInterval(typing,0.01); // 반복동작 
-                    } 
-                    
-                    function typing(){ 
-                    if(typingIdx<typingTxt.length){ // 타이핑될 텍스트 길이만큼 반복 
-                        $(".typing").append(typingTxt[typingIdx]); // 한글자씩 이어준다. 
-                        typingIdx++; 
-                    } else{ 
-                        clearInterval(tyInt); //끝나면 반복종료 
-                    } 
+                    function typingEffect(str) {
+                        var typingBool = false; 
+                        var usetext = str;
+                        var typingIdx=0;
+                        var typingTxt = usetext; // 타이핑될 텍스트를 가져온다 
+                        typingTxt=typingTxt.split(""); // 한글자씩 자른다. 
+                        if(typingBool==false){ // 타이핑이 진행되지 않았다면 
+                        typingBool=true; 
+                        
+                        var tyInt = setInterval(typing,0.01); // 반복동작 
+                        } 
+                        
+                        function typing(){ 
+                            if(typingIdx<typingTxt.length){ // 타이핑될 텍스트 길이만큼 반복 
+                                $(".typing").append(typingTxt[typingIdx]); // 한글자씩 이어준다. 
+                                typingIdx++; 
+                            } else{ 
+                                clearInterval(tyInt); //끝나면 반복종료 
+                            } 
+                        }
                     }
                     // 여기 까지 
                     if (response.crimes === "") {
                         $('.left-column').append(
                                 "<div class='left-item'><p class='title'>"+response.speaker+
-                                "</p><p class='content'>"+response.saying+"</p></div>"
+                                "</p><p class='content typing'>"+response.saying+"</p></div>"
                             )
                             
                     } else {
                         $('.left-column').append(
-                                "<div class='left-item'><p class='title'>Crimes List</p><p class='content'>"+
+                                "<div class='left-item'><p class='title'>Crimes List</p><p class='content typing'>"+
                                 response.crimes+
                                 "</p></div><div class='left-item'>"+
                                 "<p class='title'>Penalty List</p>" +
-                                "<p class='content'>"+response.penalty+"</p></div>"
+                                "<p class='content typing'>"+response.penalty+"</p></div>"
                                 
                         )
                     }    
