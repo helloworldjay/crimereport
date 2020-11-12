@@ -224,7 +224,12 @@ function clicked(d) {
     }
     
 }
-
+// 축소
+$(".hover").mouseleave(
+    function() {
+      $(this).removeClass("hover");
+    }
+  );
 function reset() {
 
     sendData.city = null;
