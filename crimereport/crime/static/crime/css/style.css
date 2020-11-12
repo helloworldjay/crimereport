@@ -1240,8 +1240,8 @@ p.comment-form-email, p.comment-form-author, p.comment-form-url {
   display: inline-block;
   flex-direction: column;
   border: 1px solid white;
-  height: 95%;
-  padding: 1%;
+  height: 100%;
+  padding: 1% 2%;
   box-sizing: border-box;
 }
 .left-column {
@@ -1264,35 +1264,51 @@ p.comment-form-email, p.comment-form-author, p.comment-form-url {
 }
 .myphoto{
   position: relative;
-  background: url(../img/photo-frame.png) bottom center no-repeat;
+  /* background: url(../img/back.jpg) bottom center no-repeat; */
+  display: flex;
   background-size: contain;
-  height:70%;
+  height:50%;
   overflow: hidden;
+  justify-content: center;
 }
 
 .myphoto img{
-  position: relative;
+  display: flex;
   z-index: -5;
-  width: 100%;
-  height: auto;
+  height: 100%;
+  width: auto;
   object-fit: cover;
 }
 .right-column ul {
   font-family: 'Roboto', sans-serif;
   align-items: flex-start;
-  height: 30%;
+  height: 50%;
   padding-top: 10%;
 }
 .right-column ul li{
+  height: 20%;
   display: flex;
   padding-left:2%;
   padding-right: 2%;
   border-bottom: 1px solid white;
-  align-items: left;
+  align-items: center;
+  vertical-align: middle;
+}
+.right-column ul li span {
+  font-size: 3vh;
+  font-weight: 600;
+  margin-left: 1.5vh;
+  text-align: center;
+  vertical-align: middle;
+  display: flex;
 }
 .right-column ul li strong {
+  display: flex;
+  vertical-align: middle;
+  text-align: center;
   font-weight: 900;
-  font-size: 2vh;
+  font-size: 3.7vh;
+  color : rgb(255, 255, 255);
 }
 
 .left-column .left-item {
