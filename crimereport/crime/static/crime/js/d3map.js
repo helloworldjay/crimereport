@@ -153,16 +153,19 @@ function clicked(d) {
                     if (response.crimes === "") {
                         $('.left-column').append(
                                 "<div class='left-item'><p class='title'>"+response.speaker+
-                                "</p><p class='content' id='typing1' typingEffect='"+typingEffect('#typing1', response.saying)+"'></p></div>"
+                                "</p><p class='content' id='typing1'></p></div>"
                             )
+                        $('#typing1').attr('typingEffect', typingEffect('#typing1',response.saying));
                     } else {
                         $('.left-column').append(
                                 "<div class='left-item'><p class='title'>Crimes List</p>"+
-                                "<p class='content' id='typing1' typingEffect='"+typingEffect('#typing1', response.crimes)+"></p></div><div class='left-item'>"+
+                                "<p class='content' id='typing1'></p></div><div class='left-item'>"+
                                 "<p class='title'>Penalty List</p>" +
-                                "<p class='content' id='typing2' typingEffect='"+typingEffect('#typing2', response.penalty)+"></p></div>"
+                                "<p class='content' id='typing2'></p></div>"
                             )
-                        }
+                        $('#typing1').attr('typingEffect', typingEffect('#typing1',response.crimes));
+                        $('#typing2').attr('typingEffect', typingEffect('#typing2',response.penalty));
+                    }
                     //
                     
                     }, 1000);
