@@ -162,7 +162,6 @@ function clicked(d) {
                                 "<p class='title'>Penalty List</p>" +
                                 "<p class='content' id='typing2' typingEffect='"+typingEffect('#typing2', response.penalty)+"></p></div>"
                             )
-                        console.log(response.penalty)
                         }
                     //
                     
