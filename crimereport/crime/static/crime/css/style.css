@@ -87,7 +87,7 @@ a {text-decoration:none;}
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0);
 }
 .background:first-child {
   background-image: url(../img/bg1.jpg);
@@ -1225,6 +1225,7 @@ p.comment-form-email, p.comment-form-author, p.comment-form-url {
   padding-left: 10%;
   padding-right: 10%;
   margin-bottom: 5%;
+  padding-top: 2%;
 }
 .right-column {
   position: relative;
@@ -1234,12 +1235,17 @@ p.comment-form-email, p.comment-form-author, p.comment-form-url {
   border: 1px solid white;
   height: 95%;
   padding: 1%;
+  box-sizing: border-box;
 }
 .left-column {
   position: relative;
   display: inline-block;
+  flex-direction: column;
+  align-items: center;
   width : 66.6666%;
   height: 95%;
+  box-sizing: border-box;
+  padding-right: 5%;
 }
 .biography{
   border-bottom-left-radius: 10px;
@@ -1249,18 +1255,6 @@ p.comment-form-email, p.comment-form-author, p.comment-form-url {
   display: inline-block;
   margin-left: -8%;
 }
-/* 
-.biography::after{
-  content: "";
-  border-bottom: 1px solid #EEEEEE;
-  position: absolute;
-  bottom: -3px;
-  width: 100%;
-  border-radius: 10px;
-  height: 20px;
-} */
-
-
 .myphoto{
   position: relative;
   background: url(../img/photo-frame.png) bottom center no-repeat;
@@ -1280,6 +1274,7 @@ p.comment-form-email, p.comment-form-author, p.comment-form-url {
   font-family: 'Roboto', sans-serif;
   align-items: flex-start;
   height: 30%;
+  padding-top: 10%;
 }
 .right-column ul li{
   display: flex;
@@ -1293,3 +1288,37 @@ p.comment-form-email, p.comment-form-author, p.comment-form-url {
   font-size: 2vh;
 }
 
+.left-column .left-item {
+  display: flex;
+  flex-direction: column;
+  padding : 5%;
+  box-sizing: border-box;
+}
+.left-column .left-item .title {
+  display: flex;
+  font-size: 10vh;
+  font-weight: 800;
+  padding-bottom : 1vh;
+  margin : 0;
+}
+.left-column .left-item .content {
+  display: flex;
+  font-size: 6vh;
+}
+/* 타이핑 하는 부분 */
+
+p.typing-txt{display: none;}
+  
+
+.typing {  
+/*       position: absolute;*/ 
+     display: inline-block; 
+      animation-name: cursor; 
+      animation-duration: 0.3s; 
+      animation-iteration-count: infinite; 
+    } 
+    @keyframes cursor{ 
+      0%{border-right: 1px solid #fff} 
+      50%{border-right: 1px solid #000} 
+      100%{border-right: 1px solid #fff} 
+    }
