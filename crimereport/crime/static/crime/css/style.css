@@ -249,6 +249,64 @@ border-top: 1px solid;
 #big_color{
   color: #c60f13;
 }
+/* 버튼 시작 css */
+@import url(https://fonts.googleapis.com/css?family=BenchNine:700);
+
+#button_map{
+  background-color: #c47135;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: 'BenchNine', Arial, sans-serif;
+  font-size: 1em;
+  font-size: 22px;
+  line-height: 1em;
+  margin: 15px 40px;
+  outline: none;
+  padding: 12px 40px 10px;
+  position: relative;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+#button_map:before,
+#button_map:after {
+  border-color: transparent;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+  border-style: solid;
+  border-width: 0;
+  content: "";
+  height: 24px;
+  position: absolute;
+  width: 24px;
+}
+#button_map:before {
+  border-color: #c47135;
+  border-right-width: 2px;
+  border-top-width: 2px;
+  right: -5px;
+  top: -5px;
+}
+#button_map:after {
+  border-bottom-width: 2px;
+  border-color: #c47135;
+  border-left-width: 2px;
+  bottom: -5px;
+  left: -5px;
+}
+#button_map:hover,
+#button_map.hover {
+  background-color: #c47135;
+}
+#button_map:hover:before,
+#button_map.hover:before,
+#button_map:hover:after,
+#button_map.hover:after {
+  height: 100%;
+  width: 100%;
+}
+/* 버튼 끝 */
 .about {
 	width: 500px;
     max-width: 100%;
@@ -1218,7 +1276,9 @@ p.comment-form-email, p.comment-form-author, p.comment-form-url {
   position: relative;
   padding-top: 1%;
   margin-right: 25%;
-  margin-left:25%
+  margin-left:25%;
+  font-family:Great Vibes;
+  color: white;
 }
 .map-choice {
   margin-top: 55px;
@@ -1303,14 +1363,14 @@ p.comment-form-email, p.comment-form-author, p.comment-form-url {
 }
 .left-column .left-item .title {
   display: flex;
-  font-size: 10vh;
+  font-size: 5.5vh;
   font-weight: 800;
   padding-bottom : 1vh;
   margin : 0;
 }
 .left-column .left-item .content {
   display: flex;
-  font-size: 6vh;
+  font-size: 3.5vh;
 }
 /* 타이핑 하는 부분 */
 
