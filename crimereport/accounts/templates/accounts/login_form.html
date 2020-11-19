@@ -1,7 +1,33 @@
-<form action="" method="post">
-    {% csrf_token %}
-    <table>
-        {{ form }}
-    </table>
-    <input type="submit" value="Login" />
-</form>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href={% static 'accounts/css/style.css' %} rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Oswald:400,700,300' rel='stylesheet' type='text/css'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <div>
+        <div class= 'login'>
+            <form action="" method="post">
+            {% csrf_token %}
+                <div class='login_top'>
+                    <div class="login_title">Login</div>
+                </div>
+                <div class= 'login_middle'>
+                    <input class="underline_id" type="text" placeholder="ID">
+                    <input class="underline_pw" type="password" placeholder="PW">
+                    <button class="login_btn">LOGIN</button>  
+                </div>
+            </form>             
+            <div class='login_bottom'>
+                <h2> Don't you hava ID? <a href="sign_form.html">sign up</a></h2>
+            </div>
+            </form>  
+        </div>
+    </div>
+</body>
+</html>
