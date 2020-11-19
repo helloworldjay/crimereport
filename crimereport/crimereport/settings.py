@@ -131,3 +131,6 @@ STATICFILES_DIRS = [
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static') # static file을 어디로 모일 것인지
+
+
+LOGIN_URL = '/post/'

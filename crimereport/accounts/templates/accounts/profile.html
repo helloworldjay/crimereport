@@ -1,0 +1,7 @@
+{{ user }}
+{% comment %} 로그인 여부 확인 {% endcomment %}
+{{ user.is_authenticated }} 
+{% comment %} 유저 프로필 접근 {% endcomment %}
+{{ user.profile }}
+{% comment %} 프로필 수정 버튼 {% endcomment %}
+<a href = "{% url 'profile_edit' %}"> 프로필 수정 </a>
