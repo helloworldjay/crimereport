@@ -1,17 +1,24 @@
 {% extends 'crime/base.html' %}
 {% load static %}
 
-<div class='container'>
-    <div class='content-wrapper'>
-        <span class='crime-title'>Post</span>
-        <div class='row'>
+{% block bodys %}
+<link rel="stylesheet" href={% static "post/css/postStyle.css" %}>
+<body>
+{% endblock bodys %}
 
-            <div class='left-column'>
+{% block contents %}
+    <div class="container">
+        <div class='postwrapper'>
+            <span class='post-title'>Post</span>
+            <div class='click-party'>
+                <img src={% static 'post/img/minju.jpg'%} alt="">
+            </div>
+            <div class='postlist'>
                 <h1>gochu</h1>
             </div>
-            <div class='right-column'>
-                <h1>gochu</h1>
+            <div class='search-post'>
+                
             </div>
         </div>
     </div>
-</div>
+{% endblock contents %}
