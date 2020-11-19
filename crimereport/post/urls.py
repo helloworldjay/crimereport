@@ -4,5 +4,5 @@ from . import views
 from django.views.generic import TemplateView
 
 urlpatterns = [
-    path('postList/',views.postList, name='postList')
+    path('postList/',views.PostList.as_view(), name='postList'),
 ]

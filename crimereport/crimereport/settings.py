@@ -129,6 +129,10 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'crime', 'static'), # 현재 static file의 위치
     os.path.join(BASE_DIR, 'post', 'static'),
+    os.path.join(BASE_DIR, 'accounts', 'static'),
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static') # static file을 어디로 모일 것인지
+
+
+LOGIN_URL = '/post/'
