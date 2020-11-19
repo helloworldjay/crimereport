@@ -1,3 +1,5 @@
+{% load socialaccount %}
+{% providers_media_js %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -24,7 +26,8 @@
                 </div>
             </form>             
             <div class='login_bottom'>
-                <h2> Don't you hava ID? <a href="{% url 'signup' %}">sign up</a></h2>
+                <h2> Don't you have ID? <a href="{% url 'signup' %}">sign up</a></h2>
+                <a href = "{% provider_login_url 'google' %}"> Google Login </a>
             </div>
             </form>  
         </div>
