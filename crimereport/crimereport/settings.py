@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     # Local Apps
     'crime',
     'post',
+    'accounts',
 ]
 
 MIDDLEWARE = [
