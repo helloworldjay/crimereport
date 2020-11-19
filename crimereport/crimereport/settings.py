@@ -21,11 +21,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'fo3kz$s^p7ty-=*0zh6c+3)!=ni$2m*__=fb^b^7576ljxm=f+'
+# SECRET_KEY = 'fo3kz$s^p7ty-=*0zh6c+3)!=ni$2m*__=fb^b^7576ljxm=f+'
 
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'cg#p$g+j9tax!#a3cup@1$8obt2_+&k3q+pmu)5%asj6yjpkag')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
+# DEBUG = False
+DEBUG = bool( os.environ.get('DJANGO_DEBUG', True))
 ALLOWED_HOSTS = ['*']
 
 
@@ -35,11 +36,19 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
+    'django.contrib.sites',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Thrid Apps
     'rest_framework',
+    ## allauth
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    
+    ## provider 소셜 로그인 기능을 제공
+    'allauth.socialaccount.providers.google',
     # Local Apps
     'crime',
     'post',
@@ -136,3 +145,12 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static') # static file을 어디로 모일
 
 
 LOGIN_URL = '/post/'
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
+SITE_ID = 2
+
+LOGIN_REDIRECT_URL = '/'
