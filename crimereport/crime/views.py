@@ -3,11 +3,11 @@ import json
 from django.forms.models import model_to_dict
 from django.http.response import JsonResponse
 from pathlib import Path
-
+from django.shortcuts import get_object_or_404
  
 
 def search(request, district):
-    info_object = Congressperson.objects.get(district=district)
+    info_object = Congressperson.objects.get_object_or_404(district=district)
     saying_object = Saying.objects.order_by("?").first()
     if info_object:
         info_dict = model_to_dict(info_object)
