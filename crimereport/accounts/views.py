@@ -6,6 +6,7 @@ from .forms import ProfileForm
 from django.contrib.auth import get_user_model, login as auth_login
 from django.contrib.auth.forms import UserCreationForm
 from django.conf import settings
+from django.contrib.auth.decorators import login_required
 
 
 class ProfileView(LoginRequiredMixin, TemplateView): # login_required
