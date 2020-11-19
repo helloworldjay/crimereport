@@ -12,25 +12,8 @@ class Congressperson(models.Model):
     elected_num = models.IntegerField()
     party = models.CharField(max_length=50)
 
-    class Meta:
-        managed = False
-        db_table = 'congressperson'
-
 
 class Saying(models.Model):
     speaker = models.CharField(max_length=50)
     saying = models.TextField()
 
-    class Meta:
-        managed = False
-        db_table = 'saying'
-
-
-class DjangoMigrations(models.Model):
-    app = models.CharField(max_length=255)
-    name = models.CharField(max_length=255)
-    applied = models.DateTimeField()
-
-    class Meta:
-        managed = False
-        db_table = 'django_migrations'
