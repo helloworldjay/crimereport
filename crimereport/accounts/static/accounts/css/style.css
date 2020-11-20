@@ -17,7 +17,7 @@ body{
 .login{
     position:absolute;
     width:300px;
-    height:400px;
+    height:500px;
     padding: 30px, 20px;
     background-color:#FFFFFF;
     text-align:center;
@@ -53,10 +53,10 @@ input.underline_pw {
 .login_btn {
     margin-top: 40px;
     position:relative;
-    left:40%;
+    left:31%;
     transform: translateX(-50%);
     margin-bottom: 20px;
-    width:80%;
+    width:62%;
     height:40px;
     background: linear-gradient(125deg,#81ecec,#6c5ce7,#81ecec);
     background-position: left;
@@ -68,7 +68,61 @@ input.underline_pw {
     transition: 0.4s;
     display:inline;
   }
-  
+.google_img{
+    margin-top: -10px;
+}
   .login_btn:hover {
     background-position: right;
   }
+.signup{
+    position:absolute;
+    width:500px;
+    height:600px;
+    padding: 30px, 20px;
+    background-color:#FFFFFF;
+    text-align:center;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    border-radius: 15px;
+}
+.signup_title{
+    margin-top: 10px;
+    font-family: 'Nanum Brush Script', cursive;
+    color: black;
+    font-size: 30px;
+}
+.login_bottom{
+    margin-top: 70px;
+    
+}
+.signup_bottom{
+    margin-top: 70px;
+    width: 100%;
+}
+.signup_bottom_right{
+    
+    display: inline-block;   
+}
+.signup_bottom_left{
+    margin-left: 5%;
+    float: left;
+}
+.signup_btn{
+    width: 200px;
+    border: 0;
+    cursor: pointer;
+    color: #fff;
+    background-color: rgb(52, 140, 242);
+    font-size: 30px;
+    font-weight: bold;
+}
+.cancel_btn{
+    width: 200px;
+    border: 0;
+    cursor: pointer;
+    color: #fff;
+    background-color: rgb(52, 140, 242);
+    font-size: 30px;
+    font-weight: bold;
+}

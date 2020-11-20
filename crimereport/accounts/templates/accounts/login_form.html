@@ -22,12 +22,13 @@
                 <div class= 'login_middle'>
                     <input class="underline_id" type="text" placeholder="ID">
                     <input class="underline_pw" type="password" placeholder="PW">
-                    <button class="login_btn">LOGIN</button>  
+                    <button class="login_btn">LOGIN</button>
+                    <a href="{% provider_login_url 'google' %}" ><img src="../../static/accounts/img/google_btn.png" class="google_img" alt=""></a>
                 </div>
             </form>             
             <div class='login_bottom'>
                 <h2> Don't you have ID? <a href="{% url 'signup' %}">sign up</a></h2>
-                <a href = "{% provider_login_url 'google' %}"> Google Login </a>
+                <!-- <a href = "{% provider_login_url 'google' %}"> Google Login </a> -->
             </div>
             </form>  
         </div>
