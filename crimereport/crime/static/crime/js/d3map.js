@@ -124,13 +124,12 @@ function clicked(d) {
     if (active.node() === this) {
         return reset();
     }
-
     //json data 생성하는 작업
     if (active[0][0] !== null) {
         // console.log(active[0][0], this)
         if ($(this).select('.precinct') !== undefined) {
         sendData.district = $(this).select('.g_precinct').select('.precinct-lable').text()
-
+        console.log(sendData)
         var jsonData = JSON.stringify(sendData)
         $.ajax({
             type: "GET",
