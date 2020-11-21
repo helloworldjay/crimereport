@@ -1,0 +1,18 @@
+{% extends 'crime/base.html' %}
+{% load static %}
+
+{% block bodys %}
+<link rel="stylesheet" href={% static "post/css/postStyle.css" %}>
+<body>
+{% endblock bodys %}
+
+{% block contents %}
+    <div class='container'>
+        <div class='postwrapper'>
+        {% for detail in detail_post %}
+            <span class='detail-title'>{{detail.title}}abcabc</span>
+            <span class='detail-text'>{{detail.text}}</span>
+        {% endfor %}
+        </div>
+    </div>
+{% endblock contents %}
