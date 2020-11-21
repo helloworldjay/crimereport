@@ -118,16 +118,26 @@
     justify-content: center;
 }
 
+.detail-container {
+    display: flex;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    align-content: center;
+}
+.detail-postwrapper{
+    display: flex;
+    width:80%;
+    flex-direction: column;
+}
 .detail-title {
-    margin-left: 10%;
-    width : 80%;
-    height : 15%;
+    display: flex;
+    font-size: 300%;
     margin-bottom : 5%;
     color: white;
 }
 .detail-text {
-    margin-left:10%;
-    width: 80%;
-    height : 60%;
+    display: flex;
     color: white;
 }
