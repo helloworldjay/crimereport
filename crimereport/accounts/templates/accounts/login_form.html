@@ -14,7 +14,8 @@
 <body>
     <div>
         <div class= 'login'>
-            <form action="" method="post">
+            
+            <form action="{% url 'login' %}" method="post">
             {% csrf_token %}
                 <div class='login_top'>
                     <div class="login_title">Login</div>
@@ -22,7 +23,7 @@
                 <div class= 'login_middle'>
                     <input class="underline_id" type="text" placeholder="ID">
                     <input class="underline_pw" type="password" placeholder="PW">
-                    <button class="login_btn">LOGIN</button>
+                    <button class="login_btn" type="submit">LOGIN</button>
                     <a href="{% provider_login_url 'google' %}" ><img src="../../static/accounts/img/google_btn.png" class="google_img" alt=""></a>
                 </div>
             </form>             
@@ -30,7 +31,12 @@
                 <h2> Don't you have ID? <a href="{% url 'signup' %}">sign up</a></h2>
                 <!-- <a href = "{% provider_login_url 'google' %}"> Google Login </a> -->
             </div>
-            </form>  
+            </form> 
+            <div>
+                {% if form.errors %}
+                <p> ID 나 비밀번호가 일치하지 않습니다 </p>
+                {% endif %}
+            </div>
         </div>
     </div>
 </body>

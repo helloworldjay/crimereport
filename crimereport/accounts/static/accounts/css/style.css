@@ -126,7 +126,7 @@ input.underline_pw {
     font-weight: bold;
 }
 
-.profile{
+#profile{
     position:absolute;
     width:500px;
     height:600px;

@@ -99,16 +99,10 @@ a {text-decoration:none;}
           transform: translateY(15vh);
 }
 .background:nth-child(2) {
-  background-image: url(../img/bg2.jpg);
+  background-color: black;
 }
 .background:nth-child(3) {
   background-image: url(../img/bg3.jpg);
-}
-.background:nth-child(4) {
-  background-image: url(../img/bg4.jpg);
-}
-.background:nth-child(5) {
-  background-image: url(../img/bg5.jpg);
 }
 
 
@@ -257,8 +251,8 @@ border-top: 1px solid;
   border: none;
   color: #ffffff;
   cursor: pointer;
+  font-family:Great Vibes;
   display: inline-block;
-  font-family: 'BenchNine', Arial, sans-serif;
   font-size: 1em;
   font-size: 22px;
   line-height: 1em;
@@ -1284,6 +1278,7 @@ p.comment-form-email, p.comment-form-author, p.comment-form-url {
   margin-top: 55px;
   
 }
+
 .row {
   position: relative;
   display: flex;
