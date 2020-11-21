@@ -1,7 +1,36 @@
-{{ user }}
-{% comment %} 로그인 여부 확인 {% endcomment %}
-{{ user.is_authenticated }} 
-{% comment %} 유저 프로필 접근 {% endcomment %}
-{{ user.profile }}
-{% comment %} 프로필 수정 버튼 {% endcomment %}
-<a href = "{% url 'profile_edit' %}"> 프로필 수정 </a>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href={% static 'accounts/css/style.css' %} rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+</head>
+<body>
+    <div class="profile">
+        <div class="profile_middle">
+            <div class="profile_left">
+
+            </div>
+            <div class="profile_right">
+                
+            </div>
+        </div>
+        <div class="profile_bottom">
+            <form action="" method="post">
+                {% csrf_token %}
+                <a href = "{% url 'profile_edit' %}"> 프로필 수정 </a>
+            </form>
+        </div>
+    </div>
+    <!-- {{ user }} -->
+    <!-- {% comment %} 로그인 여부 확인 {% endcomment %} -->
+    <!-- {{ user.is_authenticated }}  -->
+    <!-- {% comment %} 유저 프로필 접근 {% endcomment %} -->
+    <!-- {{ user.profile }} -->
+    <!-- {% comment %} 프로필 수정 버튼 {% endcomment %} -->
+    
+    <script src={% static 'accounts/js/accounts.js' %}></script>
+</body>
+</html>

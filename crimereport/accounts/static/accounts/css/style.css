@@ -3,7 +3,6 @@
 
 body{
    background-color: rgb(54, 73, 93);
-
 }
 .login_top{
     margin-top: 15px;
@@ -125,4 +124,21 @@ input.underline_pw {
     background-color: rgb(52, 140, 242);
     font-size: 30px;
     font-weight: bold;
+}
+
+.profile{
+    position:absolute;
+    width:500px;
+    height:600px;
+    padding: 30px, 20px;
+    background-color:#FFFFFF;
+    text-align:center;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    border-radius: 15px;
+}
+.profile_left{
+    background-color: black;
+    height: 1px;
 }

@@ -1,1 +1,91 @@
 {% comment %} 프로필 수정 {% endcomment %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href={% static 'accounts/css/style.css' %} rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>프로필 수정</title>
+</head>
+<body>
+    <div>
+        <div class="signup">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <div class="signup_top">
+                    <div class="signup_title">프로필 수정</div>
+                </div>
+                <div class="signup_middle">
+                    <table class="table table-boardered">
+                        <tr>
+                            <th>아이디</th>
+                            <td> {{user}} </td>        
+                        </tr>
+                        <tr>
+                            <th>비밀번호</th>
+                            <td><input type="password" class="form-control" name="edit_pass1" placeholder="비밀번호는 영문만 넣어주세요"></td>      
+                        </tr>
+                         
+                        <tr>
+                            <th>비밀번호 확인</th>
+                            <td><input type="password" class="form-control" name="ediit_pass2"></td>        
+                        </tr>
+                        <tr>
+                            <th>나이</th>
+                            <td><input type="text"" class="form-control" name="edit_age"></td>        
+                        </tr>
+                        <tr>
+                            <th>시</th>
+                            <td>
+                                <select name="h_area1" onChange="cat1_change(this.value,h_area2)" class="form-control">
+                                <option>-선택-</option>                                
+                                <option value='1'>서울</option>                                 
+                                <option value='2'>부산</option>                                 
+                                <option value='3'>대구</option>                                 
+                                <option value='4'>인천</option>                                 
+                                <option value='5'>광주</option>                                 
+                                <option value='6'>대전</option>                                 
+                                <option value='7'>울산</option>                                 
+                                <option value='8'>강원</option>                                 
+                                <option value='9'>경기</option>                                 
+                                <option value='10'>경남</option>                                 
+                                <option value='11'>경북</option>                                 
+                                <option value='12'>전남</option>                                 
+                                <option value='13'>전북</option>                                 
+                                <option value='14'>제주</option>                                 
+                                <option value='15'>충남</option>                                 
+                                <option value='16'>충북</option>
+                                <option value='17'>세종</option>
+                                </select>
+                            </td>    
+                        </tr>
+                         
+                        <tr>
+                            <th>지역구</th>
+                            <td>
+                                <select name="h_area2" class="form-control">
+                                <option>-선택-</option>
+                                </select>
+                            </td>     
+                        </tr>
+                        
+                    </table>
+                    
+                </div>
+                <div class="signup_bottom">
+                    <div class="signup_bottom_left">
+                        <button class="signup_btn">수정하기</button>   
+                    </div>
+                    <div class="signup_bottom_right">
+                        <button class="cancel_btn" type="reset">취소</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src={% static 'accounts/js/accounts.js' %}></script>
+</body>
+
+</html>
