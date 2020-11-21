@@ -124,7 +124,6 @@ function clicked(d) {
     if (active.node() === this) {
         return reset();
     }
-
     //json data 생성하는 작업
     if (active[0][0] !== null) {
         console.log(sendData)
@@ -265,7 +264,7 @@ function typingEffect(id, contentStr) {
     if(typingBool==false){ // 타이핑이 진행되지 않았다면 
     typingBool=true; 
     
-    var tyInt = setInterval(typing,5); // 반복동작 
+    var tyInt = setInterval(typing,1000); // 반복동작 
     } 
 
     function typing(){ 
