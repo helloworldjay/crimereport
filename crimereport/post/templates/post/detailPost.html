@@ -7,12 +7,23 @@
 {% endblock bodys %}
 
 {% block contents %}
-    <div class='container'>
-        <div class='postwrapper'>
-        {% for detail in detail_post %}
-            <span class='detail-title'>{{detail.title}}abcabc</span>
-            <span class='detail-text'>{{detail.text}}</span>
-        {% endfor %}
+    <div class='detail-container'>
+        <div class='detail-postwrapper'>
+            <span class='detail-title'>{{detail_post.title}}</span>
+            <span class='detail-text'>{{detail_post.text}}</span>
         </div>
+        <ul>
+            <form action="{% url 'input_comment' detail_post.id %}" method="post">
+                {% csrf_token %}
+                <input type="text" name="create_comment">
+                <button type="submit">댓글입력</button>
+            </form>
+        {% for reple in comments%}
+            <li>
+                <span class='reple-text'>{{reple.text}}</span>
+                <span class='reple-created'>{{reple.created}}</span>
+            <li>
+        {% endfor %}
+        </ul>
     </div>
 {% endblock contents %}

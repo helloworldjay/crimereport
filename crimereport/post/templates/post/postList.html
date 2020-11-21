@@ -50,7 +50,12 @@
             </div>
             <div class='search-post'>
                 <form action="{% url 'postList' %}" method="get">
-                    <input type="text" name="search_text" id="search_text">
+                    <select name="search_order">
+                        <option value="">title/text</option>
+                        <option value="title">title</option>
+                        <option value="text">text</option>
+                    </select>
+                    <input type="text" name="search_text">
                     <button type="submit">검색</button>
                 </form>
             </div>
