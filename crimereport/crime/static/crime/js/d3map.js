@@ -262,7 +262,7 @@ function typingEffect(id, contentStr) {
     if(typingBool==false){ // 타이핑이 진행되지 않았다면 
     typingBool=true; 
     
-    var tyInt = setInterval(typing,5); // 반복동작 
+    var tyInt = setInterval(typing,1000); // 반복동작 
     } 
 
     function typing(){ 
