@@ -12,6 +12,9 @@ class Congressperson(models.Model):
     elected_num = models.IntegerField()
     party = models.CharField(max_length=50)
 
+    def __str__(self):
+        return self.district
+
 
 class Saying(models.Model):
     speaker = models.CharField(max_length=50)
