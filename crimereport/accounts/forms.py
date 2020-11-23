@@ -1,5 +1,7 @@
 from django import forms
+from django.forms.fields import ChoiceField
 from django.forms.widgets import PasswordInput, Widget
+from .models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import get_user_model
 from django.contrib.auth import update_session_auth_hash
@@ -11,8 +13,8 @@ class SignupForm(UserCreationForm):
         super().__init__(*args, **kwargs)
         self.fields['city'].required = True
         self.fields['district'].required = True
-    
-    username = forms.RegexField(max_length=30,regex=r'^[\w.@+-]+$', help_text="abc",
+
+    username = forms.RegexField(max_length=30, regex=r'^[\w.@+-]+$', help_text="abc",
         widget=forms.TextInput(
         attrs={
             'class':'form-control',
@@ -64,7 +66,7 @@ class SignupForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = User
         fields = ['username','password1','password2','age', 'city','district'] # input elements
-
+    
 
 class ProfileForm(forms.ModelForm):
     class Meta:
