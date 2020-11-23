@@ -9,6 +9,8 @@ from .models import User
 from .forms import SignupForm, ProfileForm
 from django.contrib.auth.views import LoginView
 from django.views.generic import CreateView
+from django.contrib.auth.hashers import check_password
+from django.contrib.auth.forms import PasswordChangeForm
 
 
 
@@ -30,6 +32,22 @@ def profile_edit(request):
     else:
         form = ProfileForm(instance=request.user)
     return render(request, 'accounts/profile_form.html',{'form': form,})
+
+# 비밀번호 변경
+@login_required
+def password_edit(request):
+    if request.method == 'POST':
+        password_change_form = PasswordChangeForm(request.user, request.POST)
+        # 키워드인자명을 함께 써줘도 가능
+        # password_change_form = PasswordChangeForm(user=request.user, data=request.POST)
+        if password_change_form.is_valid():
+            password_change_form.save()
+            return redirect('postlist')
+    else:
+        password_change_form = PasswordChangeForm(request.user)
+    return render(request, 'accounts/password_form.html',{
+        						'password_change_form':password_change_form
+    										})
 
 
 # # 회원 가입
