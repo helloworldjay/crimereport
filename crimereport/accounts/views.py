@@ -6,10 +6,10 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib import auth, messages
 from .models import User
-from .forms import SignupForm
+from .forms import SignupForm, ProfileForm
 from django.contrib.auth.views import LoginView
 from django.views.generic import CreateView
-from .forms import SignupForm
+
 
 
 
@@ -19,23 +19,17 @@ from .forms import SignupForm
 # profile = ProfileView.as_view()
 
 
-# @login_required
-# def profile_edit(request):
-#     try:
-#         profile = request.user.profile
-#     except Profile.DoesNotExist:
-#         profile = None
-
-#     if request.method == "POST":
-#         form = ProfileForm(request.POST, request.FILES, instance=profile)
-#         if form.is_valid():
-#             form.save(commit=False)
-#             profile.user = request.user
-#             profile.save()
-#             return redirect('profile')
-#     else:
-#         form = ProfileForm()
-#     return render(request, 'accounts/profile_form.html',{'form': form,})
+@login_required
+def profile_edit(request):
+    if request.method == "POST":
+        form = ProfileForm(request.POST, request.FILES, instance=request.user)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "프로필을 수정/저장했습니다.")
+            return redirect('profile_edit')
+    else:
+        form = ProfileForm(instance=request.user)
+    return render(request, 'accounts/profile_form.html',{'form': form,})
 
 
 # # 회원 가입

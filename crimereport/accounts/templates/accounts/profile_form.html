@@ -12,14 +12,14 @@
 <body>
     <div>
         <div class="signup">
-            <form action="" method="POST">
+            <form action="" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="signup_top">
                     <div class="signup_title">프로필 수정</div>
                 </div>
                 <div class="signup_middle">
                     <table class="table table-boardered">
-                        <tr>
+                        {% comment %} <tr>
                             <th>아이디</th>
                             <td> {{user}} </td>        
                         </tr>
@@ -27,7 +27,7 @@
                             <th>비밀번호</th>
                             <td><input type="password" class="form-control" name="edit_pass1" placeholder="비밀번호는 영문만 넣어주세요"></td>      
                         </tr>
-                         
+                        
                         <tr>
                             <th>비밀번호 확인</th>
                             <td><input type="password" class="form-control" name="ediit_pass2"></td>        
@@ -73,10 +73,11 @@
                         
                     </table>
                     
-                </div>
+                </div> {% endcomment %}
+                <div>{{form}}</div>
                 <div class="signup_bottom">
                     <div class="signup_bottom_left">
-                        <button class="signup_btn">수정하기</button>   
+                        <button type = "submit" class="signup_btn">수정하기</button>   
                     </div>
                     <div class="signup_bottom_right">
                         <button class="cancel_btn" type="reset">취소</button>

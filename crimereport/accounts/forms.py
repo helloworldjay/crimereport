@@ -52,15 +52,62 @@ class SignupForm(UserCreationForm):
         })
     )
     district = forms.CharField(
-    widget=forms.TextInput(
+        widget=forms.TextInput(
+            attrs={
+                'class':'form-control',
+                'placeholder' : '지역구 입력',
+                'required' : 'True',
+                }
+            )
+        )
+    class Meta(UserCreationForm.Meta):
+        model = User
+        fields = ['username','password1','password2','age', 'city','district'] # input elements
+
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['password1', 'password2', 'age', 'city', 'district']
+    
+    password1 = forms.CharField(
+        widget=forms.PasswordInput(
         attrs={
             'class':'form-control',
-            'placeholder' : '지역구 입력',
+            'placeholder' : '비번 입력',
             'required' : 'True',
         })
     )
-    
-    class Meta(UserCreationForm.Meta):
-        
-        model = User
-        fields = ['username','password1','password2','age', 'city','district'] # input elements
+    password2 = forms.CharField(help_text='bbc',
+        widget=forms.PasswordInput(
+        attrs={
+            'class':'form-control',
+            'placeholder' : '비번 확인 입력',
+            'required' : 'True',
+        })
+    )
+    age = forms.DecimalField(max_value=100,
+    widget=forms.NumberInput(
+        attrs={
+            'class':'form-control',
+            'placeholder' : '나이 입력',
+            'required' : 'True',
+        })
+    )
+    city = forms.CharField(
+    widget=forms.TextInput(
+        attrs={
+            'class':'form-control',
+            'placeholder' : '도시 입력',
+            'required' : 'True',
+        })
+    )
+    district = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                'class':'form-control',
+                'placeholder' : '지역구 입력',
+                'required' : 'True',
+                }
+            )
+        )
