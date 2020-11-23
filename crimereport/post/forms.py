@@ -1,4 +1,4 @@
-from .models import Comment
+from .models import Comment, Post
 from django import forms
 
 class CommentForm(forms.ModelForm):
@@ -8,3 +8,9 @@ class CommentForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['text'].label = '댓글'
+
+class writeForm(forms.ModelForm):
+
+    class Meta:
+        model = Post
+        fields = ['title', 'text']

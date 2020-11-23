@@ -4,6 +4,7 @@ from .models import Post, Comment
 @admin.register(Post)
 class UserAdmin(admin.ModelAdmin):
     list_display = ['id','author','title','photo','text','created','updated']
+    
 
 @admin.register(Comment)
 class UserAdmin(admin.ModelAdmin):

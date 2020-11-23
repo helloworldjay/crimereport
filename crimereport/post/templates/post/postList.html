@@ -9,54 +9,79 @@
 {% block contents %}
     <div class="container">
         <div class='postwrapper'>
-            <span class='post-title'>Post</span>
+            <span class='post-title'>Post <a href={% url 'writepost' %} > 글쓰기 </a></span>
             <div class='click-party'>
                 <form action="{% url 'postlist' %}" method="get">
                     <button type='submit' name='party' value='minju' />
                         <img src={% static 'post/img/minju.jpg'%}>
                     </button>
                 </form>
+                
             </div>
             <div class='postlist'>
-                <ul>
-                    <li class='postlist-titles'>
-                        <span class='postlist-title'>title</span>
-                        <span class='postlist-text'>text</span>
-                    </li>
-                    {% for post in page_obj %}
-                        <li>
-                            <span class='pc-title'><a href={% url 'detailpost' post.id %}>{{ post.title }}</a></span>
-                            <span class='pc-text'>{{ post.text}}</span>
-                        </li>
-                    {% endfor %}
-                </ul>
-                <div class="pagination">
-                    <span class="step-links">
-                    {% if page_obj.has_previous %}
-                        <a href="?page=1" class='page_atag'>&laquo; first</a>
-                        <a href="?page={{ page_obj.previous_page_number }}" class='page_atag'>previous</a>
-                    {% endif %}
-
-                    <span class="current">
-                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-                    </span>
-
-                    {% if page_obj.has_next %}
-                        <a href="?page={{ page_obj.next_page_number }}" class='page_atag'>next</a>
-                        <a href="?page={{ page_obj.paginator.num_pages }}" class='page_atag'>last &raquo;</a>
-                    {% endif %}
-                    </span>
+                <table class="sub_news" border="1" cellspacing="0">
+                    <colgroup>
+                        <col width ="110">
+                        <col width ="100">
+                        <col width ="80">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th scope="col">제목</th>
+                            <th scope="col">내용</th>
+                            <th scope="col">글쓴이</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for post in page_obj %}
+                        <tr>
+                           
+                            <td class="title">
+                                <a href={% url 'detailpost' post.id %}>{{ post.title }}</a>
+                            </td>
+                            <td class="text">
+                                {{ post.text|truncatechars:20}}
+                            </td>
+                            <td class="name">
+                                woonny
+                            </td>
+                            
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <div class="page_wrap">
+                    <div class="page_nation">
+                        {% if page_obj.has_previous %}
+                            <a href="?page=1" class='arrow pprev'></a>
+                            <a href="?page={{ page_obj.previous_page_number }}" class='arrow prev'></a>
+                        {% endif %}
+                        {% for i in page_list %}
+                        {% if page_obj.numbers == i %}
+                            <a href=''><strong>{{i}}</strong></a>
+                        {% else %}
+                            <a href="?page={{i}}">{{ i }} </a>
+                        {% endif %}
+                            
+                        {% endfor %}
+                        {% if page_obj.has_next %}
+                            <a href="?page={{ page_obj.next_page_number }}" class='arrow next'></a>
+                            <a href="?page={{ page_obj.paginator.num_pages }}" class='arrow nnext'></a>
+                        {% endif %}
+                        
+                    </div>
                 </div>
             </div>
             <div class='search-post'>
-                <form action="{% url 'postlist' %}" method="get">
-                    <select name="search_order">
-                        <option value="">title/text</option>
-                        <option value="title">title</option>
-                        <option value="text">text</option>
+                <form action="{% url 'postlist' %}" method="get" class="search">                    
+                    
+                    <select name="Search_order">
+                        <option value="">제목+내용</option>
+                        <option value="title">제목</option>
+                        <option value="text">내용</option>
                     </select>
-                    <input type="text" name="search_text">
-                    <button type="submit">검색</button>
+                    <input type="text" name="search_text" class="keyword" autocomplete="off">                                        
+                    <button type="submit" class="search_button"></button>
                 </form>
             </div>
         </div>

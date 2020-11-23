@@ -9,6 +9,7 @@
 {% block contents %}
     <div class='detail-container'>
         <div class='detail-postwrapper'>
+            <a href={% url 'updatepost' detail_post.id %}>수정하기</a>
             <span class='detail-title'>{{detail_post.title}}</span>
             <span class='detail-text'>{{detail_post.text}}</span>
         </div>

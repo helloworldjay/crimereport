@@ -6,5 +6,6 @@ from django.views.generic import TemplateView
 urlpatterns = [
     path('postlist/',views.postlist, name='postlist'),
     path('postlist/<int:post_id>/',views.detailpost, name='detailpost'),
-    # path('postlist/<int:post_id>/inputcomment/',views.input_comment, name='inputcomment'),
+    path('postlist/<int:post_id>/updatepost/', views.updatepost, name='updatepost'),
+    path('postlist/writepost/', views.writepost, name='writepost'),
 ]
