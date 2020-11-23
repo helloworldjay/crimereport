@@ -16,24 +16,25 @@
                 <div class="signup_top">
                     <div class="signup_title">회원가입</div>
                 </div>
+                {% comment %} {{ form }} {% endcomment %}
                 <div class="signup_middle">
                     <table class="table table-boardered">
                         <tr>
                             <th>아이디</th>
-                            <td><input type="text" class="form-control" name="id" placeholder="id를 넣으세요"></td>        
+                            <td>{{form.username}}</td>        
                         </tr>
                         <tr>
                             <th>비밀번호</th>
-                            <td><input type="password" class="form-control" name="pass1" placeholder="비밀번호는 영문만 넣어주세요"></td>      
+                            <td>{{form.password1}}</td>      
                         </tr>
                          
                         <tr>
                             <th>비밀번호 확인</th>
-                            <td><input type="password" class="form-control" name="pass2"></td>        
+                            <td>{{form.password2}}</td>        
                         </tr>
                         <tr>
                             <th>나이</th>
-                            <td><input type="text"" class="form-control" name="age"></td>        
+                            <td>{{form.age}}</td>        
                         </tr>
                         <tr>
                             <th>시</th>

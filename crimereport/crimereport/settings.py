@@ -90,7 +90,7 @@ WSGI_APPLICATION = 'crimereport.wsgi.application'
 DATABASES = db_settings.dataroute(BASE_DIR)
 
 
-# AUTH_USER_MODEL = "accounts.User"
+AUTH_USER_MODEL = "accounts.User"
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
