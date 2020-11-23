@@ -10,5 +10,3 @@ class User(AbstractUser):
     city = models.CharField(max_length=50)
     district = models.CharField(max_length=50)
 
-class Profile(models.Model):
-    pass
