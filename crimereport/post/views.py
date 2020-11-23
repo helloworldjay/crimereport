@@ -1,10 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib import auth
 from django.views.generic import ListView,TemplateView
 from .models import Post, Comment
 from django.core.paginator import Paginator
 import json
 from django.forms.models import model_to_dict
 from django.http.response import JsonResponse
+from .forms import CommentForm
 # Create your views here.
 
 def fn_pagination(request, model, paginate_by = 12):
@@ -13,7 +15,7 @@ def fn_pagination(request, model, paginate_by = 12):
     page_obj = paginator.get_page(page_number)
     return page_obj
 
-def postList(request):
+def postlist(request):
     if 'search_text' in request.GET:
         search = request.GET['search_text']
         orders = request.GET['search_order']
@@ -34,20 +36,30 @@ def postList(request):
     return render(request, 'post/postList.html', {'page_obj':page_obj})
 
 
-def detailPost(request, post_id):
-    detail_post = Post.objects.get(id = post_id)
-    comments = Comment.objects.filter(post = post_id).order_by('created')
-    context = {'detail_post':detail_post, 'comments':comments}
-    return render(request, 'post/detailPost.html', context)
+def detailpost(request, post_id):
+    comment_form = CommentForm(request.POST)
+    if request.method == 'POST':
+        comment_form = CommentForm(request.POST)
+        comment_form.instance.post= Post.objects.get(id = post_id)
+        comment_form.instance.author = auth.get_user(request)
+        if comment_form.is_valid():
+            create_comment = comment_form.save()
+            return redirect(detailpost, post_id)
+    else:
+        detail_post = Post.objects.get(id = post_id)
+        # comments = Comment.objects.select_related('post').filter(id = post_id).order_by('created')
+        comments = detail_post.comments.all()
+        context = {'detail_post':detail_post, 'comments':comments,'comment_form':comment_form}
+        return render(request, 'post/detailPost.html', context)
 
-def input_comment(request):
-    input_data = request.POST['text']
-    post_id = request.POST['post_id']
-    Comment.objects.create(
-        post = post_id,
-        author = 0,
-        text = input_data
-    )
-    comments = model_to_dict(Comment.objects.filter(post= post_id).orderby('created')[-1])
-    to_json = {**comments}
-    return JsonResponse(to_json)
+def input_comment(request, post_id):
+    # if request.method == 'POST':
+    #     comment_form = CommentForm(request.POST)
+    #     comment_form.instance.post = post_id
+    #     comment_form.instance.author = request.user.id
+    #     if comment_form.is_valid():
+    #         create_comment = comment_form.save()
+        return redirect(detailpost)
+    # comments = model_to_dict(Comment.objects.filter(post= post_id).orderby('created')[-1])
+    # to_json = {**comments}
+    # return JsonResponse(to_json)

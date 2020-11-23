@@ -13,9 +13,10 @@
             <span class='detail-text'>{{detail_post.text}}</span>
         </div>
         <ul>
-            <form onsubmit="input_comment({{detail_post.id}})" method="post">
+            <form method="post">
+            {% comment %} onsubmit="input_comment({{detail_post.id}})" {% endcomment %}
                 {% csrf_token %}
-                <input type="text" name="create_comment">
+                <input type="text" name="text" id="text">
                 <button type="submit">댓글입력</button>
             </form>
         {% for reple in comments%}
