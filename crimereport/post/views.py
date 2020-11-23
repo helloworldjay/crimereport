@@ -40,13 +40,14 @@ def detailPost(request, post_id):
     context = {'detail_post':detail_post, 'comments':comments}
     return render(request, 'post/detailPost.html', context)
 
-def input_comment(request, post_id):
-    input_data = request.POST['create_comment']
+def input_comment(request):
+    input_data = request.POST['text']
+    post_id = request.POST['post_id']
     Comment.objects.create(
         post = post_id,
         author = 0,
         text = input_data
     )
-    comments = model_to_dict(Comment.objects.filter(post= post_id).orderby('created'))
+    comments = model_to_dict(Comment.objects.filter(post= post_id).orderby('created')[-1])
     to_json = {**comments}
     return JsonResponse(to_json)

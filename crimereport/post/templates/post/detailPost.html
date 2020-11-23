@@ -13,7 +13,7 @@
             <span class='detail-text'>{{detail_post.text}}</span>
         </div>
         <ul>
-            <form action="{% url 'input_comment' detail_post.id %}" method="post">
+            <form onsubmit="input_comment({{detail_post.id}})" method="post">
                 {% csrf_token %}
                 <input type="text" name="create_comment">
                 <button type="submit">댓글입력</button>
@@ -26,4 +26,5 @@
         {% endfor %}
         </ul>
     </div>
+    <script src={% static 'post/js/postList.js' %}></script>
 {% endblock contents %}
