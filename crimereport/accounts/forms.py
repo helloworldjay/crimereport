@@ -4,6 +4,7 @@ from django.forms.widgets import PasswordInput, Widget
 from .models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import get_user_model
+from django.contrib.auth import update_session_auth_hash
 
 User = get_user_model()
 
@@ -70,24 +71,9 @@ class SignupForm(UserCreationForm):
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ['password1', 'password2', 'age', 'city', 'district']
+        fields = ['age', 'city', 'district']
     
-    password1 = forms.CharField(
-        widget=forms.PasswordInput(
-        attrs={
-            'class':'form-control',
-            'placeholder' : '비번 입력',
-            'required' : 'True',
-        })
-    )
-    password2 = forms.CharField(help_text='bbc',
-        widget=forms.PasswordInput(
-        attrs={
-            'class':'form-control',
-            'placeholder' : '비번 확인 입력',
-            'required' : 'True',
-        })
-    )
+    
     age = forms.DecimalField(max_value=100,
     widget=forms.NumberInput(
         attrs={
@@ -113,3 +99,4 @@ class ProfileForm(forms.ModelForm):
                 }
             )
         )
+    

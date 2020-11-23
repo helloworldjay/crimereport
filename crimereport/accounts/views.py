@@ -9,6 +9,8 @@ from .models import User
 from .forms import SignupForm, ProfileForm
 from django.contrib.auth.views import LoginView
 from django.views.generic import CreateView
+from django.contrib.auth.hashers import check_password
+from django.contrib.auth.forms import PasswordChangeForm
 
 
 
@@ -30,6 +32,22 @@ def profile_edit(request):
     else:
         form = ProfileForm(instance=request.user)
     return render(request, 'accounts/profile_form.html',{'form': form,})
+
+# 비밀번호 변경
+@login_required
+def password_edit(request):
+    if request.method == 'POST':
+        password_change_form = PasswordChangeForm(request.user, request.POST)
+        # 키워드인자명을 함께 써줘도 가능
+        # password_change_form = PasswordChangeForm(user=request.user, data=request.POST)
+        if password_change_form.is_valid():
+            password_change_form.save()
+            return redirect('postlist')
+    else:
+        password_change_form = PasswordChangeForm(request.user)
+    return render(request, 'accounts/password_form.html',{
+        						'password_change_form':password_change_form
+    										})
 
 
 # # 회원 가입
@@ -62,7 +80,11 @@ def logout(request):
     # logout으로 GET 요청이 들어왔을 때, 로그인 화면을 띄워준다.
     return render(request, 'accounts/login.html')
 
-def load_cities(request):
-    city_key = request.GET.get('city')
-    # district = SignupForm.
-    # return render(request, 'hr/city_dropdown_list_options.html', {'cities': cities})
+
+# 회원 탈퇴
+@login_required
+def delete(request):
+    if request.method == 'POST':
+        request.user.delete()
+        return redirect('/')
+    return render(request, 'accounts/delete_form.html')

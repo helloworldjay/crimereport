@@ -4,3 +4,4 @@ from .models import Post
 @admin.register(Post)
 class UserAdmin(admin.ModelAdmin):
     display_list = ['author','title','photo','text','created','updated']
+    readonly_fields = ('created', 'updated')
