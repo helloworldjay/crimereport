@@ -1,10 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import ListView,TemplateView
 from .models import Post, Comment
 from django.core.paginator import Paginator
 import json
 from django.forms.models import model_to_dict
 from django.http.response import JsonResponse
+from django.contrib.auth.decorators import login_required
+from .forms import PostForm
+from django.contrib import messages
 # Create your views here.
 
 def fn_pagination(request, model, paginate_by = 12):
@@ -51,3 +54,4 @@ def input_comment(request):
     comments = model_to_dict(Comment.objects.filter(post= post_id).orderby('created')[-1])
     to_json = {**comments}
     return JsonResponse(to_json)
+

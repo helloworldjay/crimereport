@@ -11,13 +11,13 @@
         <div class='postwrapper'>
             <span class='post-title'>Post</span>
             <div class='click-party'>
-                <form action="{% url 'postList' %}" method="get">
+                <form action="{% url 'postlist' %}" method="get">
                     <button type='submit' name='party' value='minju' />
                         <img src={% static 'post/img/minju.jpg'%}>
                     </button>
                 </form>
             </div>
-            <div class='postlist'>
+            <div class='postList'>
                 <table class="sub_news" border="1" cellspacing="0">
                     <colgroup>
                         <col width ="110">
@@ -36,7 +36,7 @@
                         <tr>
                            
                             <td class="title">
-                                <a href={% url 'detailPost' post.id %}>{{ post.title }}</a>
+                                <a href={% url 'detailpost' post.id %}>{{ post.title }}</a>
                             </td>
                             <td class="text">
                                 {{ post.text}}
@@ -66,7 +66,7 @@
 
             </div>
             <div class='search-post'>
-                <form action="{% url 'postList' %}" method="get" class="search">                    
+                <form action="{% url 'postlist' %}" method="get" class="search">                    
                     
                     <select name="Search_order">
                         <option value="">제목+내용</option>
