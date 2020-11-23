@@ -1,0 +1,32 @@
+{% extends 'crime/base.html' %}
+{% load static %}
+
+{% block bodys %}
+<link rel="stylesheet" href={% static "post/css/postStyle.css" %}>
+<body>
+{% endblock bodys %}
+
+{% block contents %}
+    <div>
+        <form method="post">
+        {% csrf_token %}
+            <textarea name="title" id="" cols="30" rows="10">
+            {% if model %}
+                {{model.title}}
+            {% endif %}
+            </textarea>
+            <textarea name="text" id="" cols="30" rows="10">
+            {% if model %}
+                {{model.text}}
+            {% endif %}    
+            </textarea>
+            <button type="submit">
+            {% if model %}
+                수정완료
+            {% else %}
+                생성완료
+            {% endif %}
+            </button>
+        </form>
+    </div>
+{% endblock contents %}

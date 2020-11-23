@@ -9,13 +9,14 @@
 {% block contents %}
     <div class="container">
         <div class='postwrapper'>
-            <span class='post-title'>Post</span>
+            <span class='post-title'>Post <a href={% url 'writepost' %} > 글쓰기 </a></span>
             <div class='click-party'>
                 <form action="{% url 'postlist' %}" method="get">
                     <button type='submit' name='party' value='minju' />
                         <img src={% static 'post/img/minju.jpg'%}>
                     </button>
                 </form>
+                
             </div>
             <div class='postList'>
                 <table class="sub_news" border="1" cellspacing="0">
@@ -41,6 +42,8 @@
                             <td class="title">
                                 <a href={% url 'detailpost' post.id %}>{{ post.title }}</a>
                             </td>
+                            <td class="text">
+                                {{ post.text|truncatechars:20}}
                             <td class="created">
                                 {{ post.created }}
                             </td>
@@ -51,20 +54,27 @@
                         </tr>
                         {% endfor %}
                     </tbody>
-                </table>  
-            </div>
-            <div class="page_wrap">
-                <div class="page_nation">
-                    {% if page_obj.has_previous %}
-                    <a href="?page=1" class='arrow pprev'></a>
-                    <a href="?page={{ page_obj.previous_page_number }}" class='arrow prev'></a>
-                    {% endif %}
-                    <a href="">{{ page_obj.number }} {{ page_obj.paginator.num_pages }}</a>
-                    {% if page_obj.has_next %}
-                    <a href="?page={{ page_obj.next_page_number }}" class='arrow next'></a>
-                    <a href="?page={{ page_obj.paginator.num_pages }}" class='arrow nnext'></a>
-                    {% endif %}
-                    
+                </table>
+                <div class="page_wrap">
+                    <div class="page_nation">
+                        {% if page_obj.has_previous %}
+                            <a href="?page=1" class='arrow pprev'></a>
+                            <a href="?page={{ page_obj.previous_page_number }}" class='arrow prev'></a>
+                        {% endif %}
+                        {% for i in page_list %}
+                        {% if page_obj.numbers == i %}
+                            <a href=''><strong>{{i}}</strong></a>
+                        {% else %}
+                            <a href="?page={{i}}">{{ i }} </a>
+                        {% endif %}
+                            
+                        {% endfor %}
+                        {% if page_obj.has_next %}
+                            <a href="?page={{ page_obj.next_page_number }}" class='arrow next'></a>
+                            <a href="?page={{ page_obj.paginator.num_pages }}" class='arrow nnext'></a>
+                        {% endif %}
+                        
+                    </div>
                 </div>
             </div>
             <div class='search-post'>
