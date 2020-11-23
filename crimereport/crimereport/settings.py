@@ -90,7 +90,6 @@ WSGI_APPLICATION = 'crimereport.wsgi.application'
 DATABASES = db_settings.dataroute(BASE_DIR)
 
 
-
 AUTH_USER_MODEL = "accounts.User"
 
 # Password validation

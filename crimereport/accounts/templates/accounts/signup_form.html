@@ -16,24 +16,25 @@
                 <div class="signup_top">
                     <div class="signup_title">회원가입</div>
                 </div>
-                <div class="signup_middle"> 
+                {% comment %} {{ form }} {% endcomment %}
+                <div class="signup_middle">
                     <table class="table table-boardered">
                         <tr>
                             <th>아이디</th>
-                            <td><input type="text" class="form-control" name="id_username" placeholder="id를 넣으세요">{{ form.username }}</td>        
+                            <td>{{form.username}}</td>        
                         </tr>
                         <tr>
                             <th>비밀번호</th>
-                            <td><input type="password" class="form-control" name="id_password" placeholder="비밀번호는 영문만 넣어주세요">{{ form.password }}</td>      
+                            <td>{{form.password1}}</td>      
                         </tr>
                          
                         <tr>
                             <th>비밀번호 확인</th>
-                            <td><input type="password" class="form-control" name="id_confirm" >{{ form.password_confirm }}</td>        
+                            <td>{{form.password2}}</td>        
                         </tr>
                         <tr>
                             <th>나이</th>
-                            <td><input type="text"" class="form-control" name="id_age">{{ form.age }}</td>        
+                            <td>{{form.age}}</td>        
                         </tr>
                         <tr>
                             <th>시</th>
@@ -72,7 +73,11 @@
                         
                     </table>
                     
+<<<<<<< HEAD
+                </div>
+=======
                 </div> 
+>>>>>>> 2b6d5b86fa9cf182ba1d6f1ceac7b427886622df
                 <div class="signup_bottom">
                     <div class="signup_bottom_left">
                         <button type = "submit" class="signup_btn">가입하기</button>
