@@ -11,12 +11,11 @@
 <body>
     <div>
         <div class="signup">
-            <form action="" method="POST">
+            <form action="" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="signup_top">
                     <div class="signup_title">회원가입</div>
                 </div>
-                {% comment %} {{ form }} {% endcomment %}
                 <div class="signup_middle">
                     <table class="table table-boardered">
                         <tr>
@@ -39,7 +38,7 @@
                         <tr>
                             <th>시</th>
                             <td>
-                                <select name="h_area1" onChange="cat1_change(this.value,h_area2)" class="form-control">
+                                <!-- <select name="h_area1" onChange="cat1_change(this.value,h_area2)" class="form-control">
                                 <option>-선택-</option>                                
                                 <option value='1'>서울</option>                                 
                                 <option value='2'>부산</option>                                 
@@ -58,7 +57,8 @@
                                 <option value='15'>충남</option>                                 
                                 <option value='16'>충북</option>
                                 <option value='17'>세종</option>
-                                </select>
+                                </select> -->
+                                {{form.city}}
                             </td>    
                         </tr>
                          
@@ -68,16 +68,13 @@
                                 <select name="h_area2" class="form-control">
                                 <option>-선택-</option>
                                 </select>
+    
                             </td>     
                         </tr>
                         
                     </table>
                     
-<<<<<<< HEAD
                 </div>
-=======
-                </div> 
->>>>>>> 2b6d5b86fa9cf182ba1d6f1ceac7b427886622df
                 <div class="signup_bottom">
                     <div class="signup_bottom_left">
                         <button type = "submit" class="signup_btn">가입하기</button>

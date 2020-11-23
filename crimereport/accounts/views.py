@@ -47,6 +47,7 @@ def signup(request):
 #     # signup 으로 POST 요청이 왔을 때, 새로운 유저를 만드는 절차를 밟는다.
     if request.method == 'POST':
         form = SignupForm(request.POST)
+        print(request.GET.get('city'))
         if form.is_valid():
             signed_user = form.save()
             auth_login(request, signed_user)
@@ -90,3 +91,8 @@ def logout(request):
 
     # logout으로 GET 요청이 들어왔을 때, 로그인 화면을 띄워준다.
     return render(request, 'accounts/login.html')
+
+def load_cities(request):
+    city_key = request.GET.get('city')
+    # district = SignupForm.
+    # return render(request, 'hr/city_dropdown_list_options.html', {'cities': cities})
