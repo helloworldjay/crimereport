@@ -5,17 +5,15 @@
     <link href={% static 'accounts/css/style.css' %} rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Password</title>
+    <title>회원 탈퇴</title>
 </head>
 <body>
     <div class="profile">
-        <div class="profile_middle">
-            {{ password_change_form }}
-        </div>
         <div class="profile_bottom">
             <form action="" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
-                <a href = "{% url 'profile_edit' %}"> 비밀번호 수정 </a>
+                <p>정말로 탈퇴하시겠습니까?</p>
+                <input type="submit" value="탈퇴"/>
             </form>
         </div>
     </div>
