@@ -1,31 +1,12 @@
 from django.shortcuts import render
 from django.views.generic import ListView,TemplateView
-from .models import Post
+from .models import Post, Comment
 from django.core.paginator import Paginator
+import json
+from django.forms.models import model_to_dict
+from django.http.response import JsonResponse
 # Create your views here.
 
-
-# def postList(request):
-#     return render(request, 'post/postList.html', {})
-
-# class PostList(ListView):
-#     paginate_by = 12
-#     model = Post
-#     template_name= 'post/postList.html'
-
-#     def get(self, request):
-#         paginator = Paginator(self.model, self.paginate_by)
-#         page_number = request.GET.get('page')
-#         page_obj = paginator.get_page(page_number)
-#         if 'search_text' in request.GET:
-#             search = request.GET['search_text']
-#             self.model = Post.objects.filter(title__contains=search)
-#             paginator = Paginator(self.model,self.paginate_by)
-
-#             page_number = request.GET.get('page')
-#             page_obj = paginator.get_page(page_number)
-#             return render(request, 'post/postList.html', {'page_obj':page_obj})
-#         return render(request, 'post/postList.html', {'page_obj':page_obj})
 def fn_pagination(request, model, paginate_by = 12):
     paginator = Paginator(model, paginate_by)
     page_number = request.GET.get('page')
@@ -35,11 +16,17 @@ def fn_pagination(request, model, paginate_by = 12):
 def postList(request):
     if 'search_text' in request.GET:
         search = request.GET['search_text']
-        model = Post.objects.filter(text__contains=search)
+        orders = request.GET['search_order']
+        if orders == 'text':
+            model = Post.objects.filter(text__contains=search)
+        elif orders == 'title':
+            model = Post.objects.filter(title__contains=search)
+        else:
+            model = Post.objects.filter(text__contains=search, title__contains=search)
         page_obj = fn_pagination(request, model)
     elif 'party' in request.GET:
         search = request.GET['party']
-        model = Post.objects.filter(text__contains=search)
+        model = Post.objects.filter(title__contains=search)
         page_obj = fn_pagination(request, model)
     else:
         model = Post.objects.all()
@@ -48,6 +35,19 @@ def postList(request):
 
 
 def detailPost(request, post_id):
-    detail_post = Post.objects.filter(id = post_id)
-    context = {'detail_post':detail_post}
+    detail_post = Post.objects.get(id = post_id)
+    comments = Comment.objects.filter(post = post_id).order_by('created')
+    context = {'detail_post':detail_post, 'comments':comments}
     return render(request, 'post/detailPost.html', context)
+
+def input_comment(request):
+    input_data = request.POST['text']
+    post_id = request.POST['post_id']
+    Comment.objects.create(
+        post = post_id,
+        author = 0,
+        text = input_data
+    )
+    comments = model_to_dict(Comment.objects.filter(post= post_id).orderby('created')[-1])
+    to_json = {**comments}
+    return JsonResponse(to_json)
