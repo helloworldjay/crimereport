@@ -7,7 +7,10 @@ class Post(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     title = models.TextField()
-
+    
+    # def get_absolute_url(self):
+    #     return reverse("model_detail", kwargs={"pk": self.pk})
+    
 
 class Comment(models.Model):
     post = models.ForeignKey('post.Post', on_delete=models.CASCADE, related_name='comments')

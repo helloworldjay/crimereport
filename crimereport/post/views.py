@@ -6,8 +6,10 @@ from django.core.paginator import Paginator
 import json
 from django.forms.models import model_to_dict
 from django.http.response import JsonResponse
-from .forms import CommentForm, writeForm
+from .forms import CommentForm, writeForm, PostForm
 from django.utils import timezone
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 # Create your views here.
 
 def fn_pagination(request, model, paginate_by = 12):
