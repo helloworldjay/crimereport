@@ -1,15 +1,18 @@
 from django import forms
 from django.forms.widgets import PasswordInput, Widget
-from .models import User
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 class SignupForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['city'].required = True
         self.fields['district'].required = True
+    
     username = forms.RegexField(max_length=30,regex=r'^[\w.@+-]+$', help_text="abc",
-    widget=forms.TextInput(
+        widget=forms.TextInput(
         attrs={
             'class':'form-control',
             'placeholder' : 'ID 입력',
@@ -40,13 +43,23 @@ class SignupForm(UserCreationForm):
             'required' : 'True',
         })
     )
-    city = forms.MultipleChoiceField(
-        Widget=forms.SelectMultiple(
-            attrs={
-                'class' : 'form-control',
-            }
-        )
+    city = forms.CharField(
+    widget=forms.TextInput(
+        attrs={
+            'class':'form-control',
+            'placeholder' : '도시 입력',
+            'required' : 'True',
+        })
     )
+    district = forms.CharField(
+    widget=forms.TextInput(
+        attrs={
+            'class':'form-control',
+            'placeholder' : '지역구 입력',
+            'required' : 'True',
+        })
+    )
+    
     class Meta(UserCreationForm.Meta):
         
         model = User
