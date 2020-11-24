@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib import auth
 from django.views.generic import ListView,TemplateView
 from .models import Post, Comment
+from crime.models import Congressperson
+from accounts.models import User
 from django.core.paginator import Paginator
 import json
 from django.forms.models import model_to_dict
@@ -42,7 +44,18 @@ def postlist(request):
         page_obj, page_list = fn_pagination(request, model)
     elif 'party' in request.GET:
         search = request.GET['party']
-        model = Post.objects.get(text__contains=search)
+        # models = Post.objects.all()
+        partys_of_congressperson = Congressperson.objects.filter(party = search)
+        user_model = User.objects.all()
+        final_user = []
+        for cong_person in partys_of_congressperson:
+            for user in user_model:
+                if user.city+user.district in cong_person.district:
+                    final_user.append(user)
+        model = Post.objects.none()
+        for user in final_user:
+            model |= Post.objects.filter(author = user)
+
         page_obj, page_list = fn_pagination(request, model)
     else:
         model = Post.objects.all()
