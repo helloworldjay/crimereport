@@ -45,7 +45,7 @@
                         </tr>
                     </thead>
                     <tbody class="postlist_tbody">
-                        {% for post in page_obj %}
+                        {% for post,cong_person in page_obj %}
                         <tr>
                             <td class="No">
                                 {{post.id}}
@@ -59,7 +59,7 @@
                                 {{ post.created }}
                             </td>
                             <td class="name">
-                                {{ post.author }}
+                                {{ cong_person }}
                             </td>
                             
                         </tr>

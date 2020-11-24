@@ -31,6 +31,14 @@ def fn_pagination(request, model, paginate_by = 10):
     page_list = paginator.page_range[start_index:end_index]
     return (page_obj, page_list)
 
+def get_author_congperson(model):
+    result = []
+    for m in model:
+        user = User.objects.get(username = m.author)
+        c = Congressperson.objects.get(district = user.city + user.district)
+        result.append([m,c.name])
+    return result
+
 def postlist(request):
     if 'search_text' in request.GET:
         search = request.GET['search_text']
@@ -41,7 +49,8 @@ def postlist(request):
             model = Post.objects.filter(title__contains=search)
         else:
             model = Post.objects.filter(text__contains=search, title__contains=search)
-        page_obj, page_list = fn_pagination(request, model)
+        result = get_author_congperson(model)
+        page_obj, page_list = fn_pagination(request, result)
     elif 'party' in request.GET:
         search = request.GET['party']
         # models = Post.objects.all()
@@ -55,10 +64,12 @@ def postlist(request):
         model = Post.objects.none()
         for user in final_user:
             model |= Post.objects.filter(author = user)
-        page_obj, page_list = fn_pagination(request, model)
+        result = get_author_congperson(model)
+        page_obj, page_list = fn_pagination(request, result)
     else:
         model = Post.objects.all()
-        page_obj, page_list = fn_pagination(request, model)
+        result = get_author_congperson(model)
+        page_obj, page_list = fn_pagination(request, result)
     return render(request, 'post/postList.html', {'page_obj':page_obj,'page_list':page_list})
 
 
