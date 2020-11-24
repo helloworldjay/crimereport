@@ -55,7 +55,6 @@ def postlist(request):
         model = Post.objects.none()
         for user in final_user:
             model |= Post.objects.filter(author = user)
-
         page_obj, page_list = fn_pagination(request, model)
     else:
         model = Post.objects.all()

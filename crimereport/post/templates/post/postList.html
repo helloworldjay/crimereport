@@ -11,22 +11,22 @@
         <div class='postwrapper'>
             <span class='post-title'>Post</span>
             <div class='click-party'>
-                <a href={% url 'writepost' %} class="writepost" > 글쓰기 </a>
                 <form action="{% url 'postlist' %}" method="get">
                     <button type='submit' name='party' value='더불어민주당' />
-                        <img src={% static 'post/img/minju.jpg'%}>
+                        <img src={% static 'post/img/minju.jpg'%} alt='더불어민주당'>
                     </button>
                     <button type='submit' name='party' value='국민의힘' />
-                        <img src={% static 'post/img/power.jpg'%}>
+                        <img src={% static 'post/img/power.jpg'%} alt="국민의힘">
                     </button>
                     <button type='submit' name='party' value='정의당' />
-                        <img src={% static 'post/img/jungeui.png'%}>
+                        <img src={% static 'post/img/jungeui.png'%} alt='정의당'>
                     </button>
-                    <button type='submit' name='party' value='국민의당' />
-                        <img src={% static 'post/img/citizen.jpg'%}>
+                    <button type='submit' name='party' value='국민의당'  alt ='국민의당'/>
+                        <img src={% static 'post/img/citizen.jpg'%} alt='국민의당'>
                     </button>
                 </form>
-                
+                <a href={% url 'writepost' %}><button class='writepost'>글쓰기</button></a>
+
             </div>
             <div class='postList'>
                 <table class="sub_news" border="1" cellspacing="0">
