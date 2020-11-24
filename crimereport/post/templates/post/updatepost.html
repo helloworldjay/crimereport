@@ -7,26 +7,32 @@
 {% endblock bodys %}
 
 {% block contents %}
-    <div>
-        <form method="post">
-        {% csrf_token %}
-            <textarea name="title" id="" cols="30" rows="10">
-            {% if model %}
-                {{model.title}}
-            {% endif %}
-            </textarea>
-            <textarea name="text" id="" cols="30" rows="10">
-            {% if model %}
+    <section id="container">
+		<h2>글쓰기</h2>
+		<form name="hongkiat" id="updatepost-form" method="post" action="#">
+            {% csrf_token %}
+		<div id="wrapping" class="clearfix">
+			<section id="aligned">
+			<input type="text" name="title" id="name" placeholder="제목" autocomplete="off" tabindex="1" class="txtinput" >
+            <div id="email" class="txtinput" >{{user}}</div>				
+			<textarea name="text" id="message" placeholder="내용" tabindex="3" class="txtblock">
+                {% if model %}
                 {{model.text}}
-            {% endif %}    
+                {% endif %}  
             </textarea>
-            <button type="submit">
+			</section>
+		</div>
+		<section id="buttons">
+            <button type="submit" name="submit" id="submitbtn" class="submitbtn" tabindex="4">
             {% if model %}
                 수정완료
             {% else %}
                 생성완료
             {% endif %}
             </button>
-        </form>
-    </div>
+			<input type="reset" name="reset" id="resetbtn" class="resetbtn" value="취소">
+			<br style="clear:both;">
+		</section>
+		</form>
+	</section>
 {% endblock contents %}
