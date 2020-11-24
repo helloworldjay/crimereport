@@ -9,10 +9,16 @@
 {% block contents %}
     <div class='detail-container'>
         <div class='detail-postwrapper'>
-            <a href={% url 'updatepost' detail_post.id %}>수정하기</a>
+            {% if user == detail_post.author %}
+                <a href={% url 'updatepost' detail_post.id %}>수정하기</a>
+            {% endif %}
+            <span class='detail-pagetitle'>Crime</span>
             <span class='detail-title'>{{detail_post.title}}</span>
+            <p class='detail-idbar'>{{detail_post.author}}</p>
             <span class='detail-text'>{{detail_post.text}}</span>
         </div>
+        <br>
+        <br>
         <ul>
             <form method="post">
             {% comment %} onsubmit="input_comment({{detail_post.id}})" {% endcomment %}
