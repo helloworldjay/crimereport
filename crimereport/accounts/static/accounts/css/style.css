@@ -24,6 +24,8 @@ body{
     left:50%;
     transform: translate(-50%,-50%);
     border-radius: 15px;
+    justify-content: center;
+    align-content: center;
 }
 input.underline_id {
     width: 90%;
@@ -65,7 +67,7 @@ input.underline_pw {
     border:none;
     cursor:pointer;
     transition: 0.4s;
-    display:inline;
+    display:flex;
   }
 .google_img{
     margin-top: -10px;
