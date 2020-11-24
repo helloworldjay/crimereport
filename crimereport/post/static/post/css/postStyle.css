@@ -2,7 +2,7 @@ html{
     background-color: white;
 }
 body{
-    background-color: white;
+    background-color:  white;
 }
 .postwrapper {
     display: flex;
@@ -69,26 +69,53 @@ body{
 
 .detail-container {
     display: flex;
-    width: 100%;
-    margin: 0;
-    padding: 0;
+    width: 85%;
+    margin-left: 7.5%;
+    margin-right: 7.5%;
     justify-content: center;
-    align-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+    padding-left: 1%;
+    padding-right: 1%;
 }
 .detail-postwrapper{
     display: flex;
     width:80%;
     flex-direction: column;
+    min-height: 100vh;
 }
-.detail-title {
+.detail-postwrapper .detail-pagetitle {
+    display: flex;
+    font-size: 300%;
+    font-weight: 500;
+    font-family: Great Vibes;
+}
+.detail-postwrapper .detail-title {
     display: flex;
     font-size: 300%;
     margin-bottom : 5%;
-    color: white;
+    color: black;
 }
-.detail-text {
+.detail-postwrapper .detail-text {
     display: flex;
-    color: white;
+    color: black;
+}
+.detail-postwrapper .detail-idbar {
+    display: inline;
+    background-color: rgba(0, 0, 1, 0.521);
+}
+.detail-container ul {
+    display: flex;
+    width: 80%;
+    flex-direction: column;
+}
+.detail-container ul form {
+    display: flex;
+}
+.detail-container ul li {
+    display: flex;
+
 }
 .sub_news,.sub_news th,.sub_news td{
     border:0
