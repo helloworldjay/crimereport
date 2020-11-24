@@ -918,9 +918,7 @@ a.map {border-bottom: 1px dashed;    color: #fff;}
   -o-transform:translateY(-50%);
   transform:translateY(-50%);
 }
-html, body {
-  background: rgba(20,20,20,1);
-}
+
 .menu-outer {
   
   overflow: hidden;
@@ -1410,3 +1408,70 @@ p.typing-txt{display: none;}
       50%{border-right: 1px solid #000} 
       100%{border-right: 1px solid #fff} 
     }
+
+
+
+/* -----------개발자------------ */
+
+#developer_body{
+  background-color: #8977ad;
+}
+  .dev_body {
+      background-color: #8977ad;
+      padding-top: 300px;
+
+  }
+  
+  .dev_body h1, ul {
+      font-family: 'Do Hyeon', sans-serif;
+  }
+  
+  .dev_body hr {
+      margin: 0 30px;
+  }
+  
+  .dev_body .profile_left {
+      background-color: white;
+      border-top: 10px solid #6b5892;
+      border-bottom: 10px solid #6b5892;
+      border-radius: 10px;
+      margin: 0 auto;
+      width: 400px;
+      text-align: center;
+  }
+  .dev_body .profile_middle {
+    background-color: white;
+    border-top: 10px solid #6b5892;
+    border-bottom: 10px solid #6b5892;
+    border-radius: 10px;
+    margin: 0 auto;
+    width: 400px;
+    text-align: center;
+}
+.dev_body .profile_right {
+  background-color: white;
+  border-top: 10px solid #6b5892;
+  border-bottom: 10px solid #6b5892;
+  border-radius: 10px;
+  margin: 0 auto;
+  width: 400px;
+  text-align: center;
+}
+  
+  .dev_body .profile-image {
+      width: 200px;
+      height: 200px;
+      border-radius: 75px;
+      margin-top: -70px;
+  }
+  
+  .dev_body .text{
+      color: gray;
+      text-align: left;
+      font-size: 1.2em;
+      list-style: none;
+  }
+  .dev_conatiner{
+    display: flex;
+    justify-content: center;
+  }
