@@ -13,8 +13,17 @@
             <div class='click-party'>
                 <a href={% url 'writepost' %} class="writepost" > 글쓰기 </a>
                 <form action="{% url 'postlist' %}" method="get">
-                    <button type='submit' name='party' value='minju' />
+                    <button type='submit' name='party' value='더불어민주당' />
                         <img src={% static 'post/img/minju.jpg'%}>
+                    </button>
+                    <button type='submit' name='party' value='국민의힘' />
+                        <img src={% static 'post/img/power.jpg'%}>
+                    </button>
+                    <button type='submit' name='party' value='정의당' />
+                        <img src={% static 'post/img/jungeui.png'%}>
+                    </button>
+                    <button type='submit' name='party' value='국민의당' />
+                        <img src={% static 'post/img/citizen.jpg'%}>
                     </button>
                 </form>
                 

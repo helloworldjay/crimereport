@@ -2,14 +2,18 @@ from django.shortcuts import render, redirect
 from django.contrib import auth
 from django.views.generic import ListView,TemplateView
 from .models import Post, Comment
+from crime.models import Congressperson
+from accounts.models import User
 from django.core.paginator import Paginator
 import json
 from django.forms.models import model_to_dict
+from django.http.request import HttpRequest
 from django.http.response import JsonResponse
 from .forms import CommentForm, writeForm, PostForm
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+
 # Create your views here.
 
 def fn_pagination(request, model, paginate_by = 12):
@@ -40,7 +44,18 @@ def postlist(request):
         page_obj, page_list = fn_pagination(request, model)
     elif 'party' in request.GET:
         search = request.GET['party']
-        model = Post.objects.filter(title__contains=search)
+        # models = Post.objects.all()
+        partys_of_congressperson = Congressperson.objects.filter(party = search)
+        user_model = User.objects.all()
+        final_user = []
+        for cong_person in partys_of_congressperson:
+            for user in user_model:
+                if user.city+user.district in cong_person.district:
+                    final_user.append(user)
+        model = Post.objects.none()
+        for user in final_user:
+            model |= Post.objects.filter(author = user)
+
         page_obj, page_list = fn_pagination(request, model)
     else:
         model = Post.objects.all()
@@ -50,11 +65,11 @@ def postlist(request):
 
 def detailpost(request, post_id):
     if request.method == 'POST':
-        comment_form = CommentForm(request.POST)
-        comment_form.instance.post= Post.objects.get(id = post_id)
-        comment_form.instance.author = auth.get_user(request)
+        comment_form = CommentForm(request.POST, request.FILES)
         if comment_form.is_valid():
-            create_comment = comment_form.save()
+            comment_form.instance.post= Post.objects.get(id = post_id)
+            comment_form.instance.author = auth.get_user(request)
+            comment_form.save()
             return redirect(detailpost, post_id)
     else:
         detail_post = Post.objects.get(id = post_id)
@@ -63,22 +78,21 @@ def detailpost(request, post_id):
         context = {'detail_post':detail_post, 'comments':comments}
         return render(request, 'post/detailPost.html', context)
 
-def input_comment(request, post_id):
-    # if request.method == 'POST':
-    #     comment_form = CommentForm(request.POST)
-    #     comment_form.instance.post = post_id
-    #     comment_form.instance.author = request.user.id
-    #     if comment_form.is_valid():
-    #         create_comment = comment_form.save()
-        return redirect(detailpost)
-    # comments = model_to_dict(Comment.objects.filter(post= post_id).orderby('created')[-1])
-    # to_json = {**comments}
-    # return JsonResponse(to_json)
+def ajaxcreatecomment(request, post_id):
+    if HttpRequest.is_ajax():
+        comment_form = CommentForm(request.POST, request.FILES)
+        if comment_form.is_valid():
+            comment_form.instance.post= Post.objects.get(id = post_id)
+            comment_form.instance.author = auth.get_user(request)
+            comment_form.save()
+            senddata = model_to_dict(comment_form.instance)
+            to_json = {**senddata}
+            return JsonResponse(to_json)
 
 def updatepost(request, post_id):
     model = Post.objects.get(id=post_id)
     if request.method == 'POST':
-        writeform = writeForm(request.POST, request.FILES, instance = request.user) #수정시에는 instance와 files를 불러와야함
+        writeform = writeForm(request.POST, request.FILES, instance = model) #수정시에는 instance와 files를 불러와야함
         if writeform.is_valid():
             model.title = writeform.cleaned_data['title']
             model.text = writeform.cleaned_data['text']
@@ -91,7 +105,7 @@ def updatepost(request, post_id):
 
 def writepost(request):
     if request.method == 'POST':
-        writeform = writeForm(request.POST)
+        writeform = writeForm(request.POST, request.FILES)
         if writeform.is_valid():
             writeform.instance.author = auth.get_user(request) #생성시에는 instance, files를 안불러와도됨
             writeform.save()

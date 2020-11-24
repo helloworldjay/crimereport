@@ -247,3 +247,9 @@ select option{
 .search:hover > select{
     opacity: 1;
 }
+
+/* detail post, create and update post,comment create*/
+.post-container {
+    display: flex;
+    width : 100%;
+}
