@@ -11,7 +11,7 @@
 </head>
 <body>
     <div>
-        <div class="signup">
+        <div class="profile">
             <form action="" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="signup_top">
@@ -21,15 +21,6 @@
                     <table class="table table-boardered">
                         <th>아이디</th>
                             <td> {{user}} </td>        
-                        </tr>
-                        <tr>
-                            <th>비밀번호</th>
-                            <td>{{form.password1}}</td>      
-                        </tr>
-                        
-                        <tr>
-                            <th>비밀번호 확인</th>
-                            <td>{{form.password2}}</td>        
                         </tr>
                         <tr>
                             <th>나이</th>
@@ -61,7 +52,6 @@
             </form>
         </div>
     </div>
-    <script src={% static 'accounts/js/accounts.js' %}></script>
 </body>
 
 </html>

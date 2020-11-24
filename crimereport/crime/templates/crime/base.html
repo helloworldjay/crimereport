@@ -17,6 +17,8 @@
 <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,400italic,300italic,300,700,700italic' rel='stylesheet' type='text/css'>
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Dokdo&display=swap" rel="stylesheet">
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -53,8 +55,12 @@
     <nav>
         <ul>
            <li><a href={% url 'congresslist' %}>Crime</a></li>
-           {% comment %} <li><a href={% url 'congressdetail'%}>Post</a></li> {% endcomment %}
-           <li><a href={% url 'postlist'%}>post</a></li>
+           {% if not user.is_authenticated %}
+               <li><a href={% url 'login'%}>POST</a></li>
+           {% else %}
+               <li><a href={% url 'postlist'%}>POST</a></li>
+           {% endif %}
+
            <li><a target="_blank" href="https://www.wowthemes.net/themes/beauttio/">개발자</a></li>
        </ul>
    </nav>

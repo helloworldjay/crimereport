@@ -150,13 +150,13 @@ function clicked(d) {
                     // left-column 내용 추가
                     if (response.crimes === "") {
                         $('.left-column').append(
-                                "<div class='left-item'><p class='title'>"+response.speaker+
+                                "<div class='left-item'><p class='title' id='typingtitle'>"+response.speaker+
                                 "</p><p class='content' id='typing1'></p></div>"
                             )
                         $('#typing1').attr('typingEffect', typingEffect('#typing1',response.saying));
                     } else {
                         $('.left-column').append(
-                                "<div class='left-item'><p class='title'>Crimes List</p>"+
+                                "<div class='left-item'><p class='title' id='typingtitle'>Crimes List</p>"+
                                 "<p class='content' id='typing1'></p></div><div class='left-item'>"+
                                 "<p class='title'>Penalty List</p>" +
                                 "<p class='content' id='typing2'></p></div>"
