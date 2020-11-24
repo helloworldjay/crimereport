@@ -16,7 +16,7 @@ from django.contrib import messages
 
 # Create your views here.
 
-def fn_pagination(request, model, paginate_by = 12):
+def fn_pagination(request, model, paginate_by = 10):
     paginator = Paginator(model, paginate_by)
     page_number = request.GET.get('page', 1)
     page_obj = paginator.get_page(page_number)

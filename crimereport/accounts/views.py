@@ -78,7 +78,7 @@ def logout(request):
         return redirect('/')
 
     # logout으로 GET 요청이 들어왔을 때, 로그인 화면을 띄워준다.
-    return render(request, 'accounts/login.html')
+    return render(request, 'accounts/login_form.html')
 
 
 # 회원 탈퇴
@@ -88,3 +88,6 @@ def delete(request):
         request.user.delete()
         return redirect('/')
     return render(request, 'accounts/delete_form.html')
+
+def developer(request):
+    return render(request,'accounts/developer.html')
