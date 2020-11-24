@@ -243,11 +243,20 @@ border-top: 1px solid;
 #big_color{
   color: #c60f13;
 }
+
+/* contents CSS */
+@import url(https://fonts.googleapis.com/css2?family=Dokdo&display=swap);
+#typingtitle, #typing1, #typing2{
+  font-family: 'Dokdo', cursive;
+  font-size: 50px;
+}
+
+
 /* 버튼 시작 css */
 @import url(https://fonts.googleapis.com/css?family=BenchNine:700);
 
 #button_map{
-  background-color: #c47135;
+  background-color: rgba(145, 255, 255, 0.65);
   border: none;
   color: #ffffff;
   cursor: pointer;
@@ -276,7 +285,7 @@ border-top: 1px solid;
   width: 24px;
 }
 #button_map:before {
-  border-color: #c47135;
+  border-color: rgba(145, 255, 255, 0.65);
   border-right-width: 2px;
   border-top-width: 2px;
   right: -5px;
@@ -284,14 +293,14 @@ border-top: 1px solid;
 }
 #button_map:after {
   border-bottom-width: 2px;
-  border-color: #c47135;
+  border-color: rgba(145, 255, 255, 0.65);
   border-left-width: 2px;
   bottom: -5px;
   left: -5px;
 }
 #button_map:hover,
 #button_map.hover {
-  background-color: #c47135;
+  background-color: rgba(145, 255, 255, 0.65);
 }
 #button_map:hover:before,
 #button_map.hover:before,
@@ -1382,7 +1391,7 @@ p.comment-form-email, p.comment-form-author, p.comment-form-url {
 }
 .left-column .left-item .content {
   display: flex;
-  font-size: 3.5vh;
+  font-size: 5vh;
 }
 /* 타이핑 하는 부분 */
 
