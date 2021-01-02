@@ -8,6 +8,7 @@
 # Table of Contents
 * [Team Members](#team-members)
 * [Library & Framework](#skills)
+* [ToDo](#todo)
 
 
 
@@ -22,3 +23,10 @@
 * HTML
 * CSS
 * JavaScript
+
+<br/>
+
+# <a name="todo"></a>ToDo List
+1. [ ] set base settings for post app
+
+2. [ ] implement models and migrate
