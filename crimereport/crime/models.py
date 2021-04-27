@@ -1,8 +1,6 @@
 from django.db import models
 
 
-
-
 class Congressperson(models.Model):
     name = models.CharField(max_length=50)
     district = models.CharField(max_length=1000)
@@ -19,4 +17,3 @@ class Congressperson(models.Model):
 class Saying(models.Model):
     speaker = models.CharField(max_length=50)
     saying = models.TextField()
-

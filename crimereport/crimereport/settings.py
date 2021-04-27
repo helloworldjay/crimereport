@@ -13,9 +13,9 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 import os
 import db_settings
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -26,12 +26,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'cg#p$g+j9tax!#a3cup@1$8obt2_+&k3q+pmu)5%asj6yjpkag')
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = False
-DEBUG = bool( os.environ.get('DJANGO_DEBUG', True))
+DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
 ALLOWED_HOSTS = [
     'crimereport.eba-jqbrrxpn.us-west-2.elasticbeanstalk.com',
     '*',
 ]
-
 
 # Application definition
 
@@ -45,11 +44,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Thrid Apps
     'rest_framework',
-    ## allauth
+    # allauth
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    
+
     ## provider 소셜 로그인 기능을 제공
     'allauth.socialaccount.providers.google',
     # Local Apps
@@ -88,10 +87,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'crimereport.wsgi.application'
 
-
-
 DATABASES = db_settings.dataroute(BASE_DIR)
-
 
 AUTH_USER_MODEL = "accounts.User"
 
@@ -113,7 +109,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
@@ -127,20 +122,18 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'crime', 'static'), # 현재 static file의 위치
+    os.path.join(BASE_DIR, 'crime', 'static'),  # 현재 static file의 위치
     os.path.join(BASE_DIR, 'post', 'static'),
     os.path.join(BASE_DIR, 'accounts', 'static'),
 ]
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static') # static file을 어디로 모일 것인지
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')  # static file을 어디로 모일 것인지
 
 LOGIN_URL = '/post/'
 
